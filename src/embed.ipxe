@@ -27,7 +27,12 @@ echo Gateway: ${gateway}
 echo DNS: ${dns}
 echo  
 echo 
+echo ~~~ Individual configuration ~~~
+echo Please enter your customer token (or wait 10s for default):
+read token || set token default
+echo  
+echo 
 echo ~~~ Boot ~~~
-echo Booting from https://deploy.umh.app/boot.ipxe ...
-chain https://deploy.umh.app/boot.ipxe ||
+echo Booting...
+chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token} ||
 prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
