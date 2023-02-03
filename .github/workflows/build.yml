@@ -9,7 +9,7 @@ jobs:
         steps:
           - uses: actions/checkout@v2
           - name: Build the Docker image
-            run: docker run -v $(pwd)/output:/output -it $(docker build -q .)
+            run: docker run -v $(pwd)/output:/output $(docker build -q .)
           - name: Upload artifact
             uses: actions/upload-artifact@v2
             with:
