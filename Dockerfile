@@ -3,7 +3,7 @@ FROM docker.io/ubuntu:latest
 RUN echo "Installing dependencies"
 
 RUN apt-get update -y
-RUN apt-get install -y gcc binutils make perl-base liblzma-dev mtools genisoimage syslinux dos2unix isolinux qemu-utils gcc-aarch64-linux-gnu
+RUN apt-get install -y gcc binutils make perl-base liblzma-dev mtools genisoimage syslinux dos2unix isolinux qemu-utils gcc-aarch64-linux-gnu git
 RUN apt-get upgrade -y
 
 RUN echo "Copying files"
@@ -21,5 +21,9 @@ RUN chmod +x /src/util/zbin
 
 COPY make.sh /make.sh
 RUN chmod +x /make.sh
+
+# Generating elf2efi
+RUN git clone https://github.com/davmac314/elf2efi.git
+RUN cd elf2efi && make && cp elf2efi64 /src/util/elf2efi64
 
 ENTRYPOINT ["/bin/sh", "-c", "/make.sh"]
