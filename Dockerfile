@@ -12,9 +12,7 @@ COPY src /src
 
 # Generating elf2efi
 RUN git clone https://github.com/davmac314/elf2efi.git
-RUN cd elf2efi
-RUN make -j
-RUN cp elf2efi64 /src/util/elf2efi64
+RUN cd elf2efi && make -j && cp elf2efi64 /src/util/elf2efi64
 
 RUN echo "Fixing files"
 RUN dos2unix /src/util/genfsimg
