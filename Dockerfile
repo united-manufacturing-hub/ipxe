@@ -14,7 +14,6 @@ RUN echo "Fixing files"
 RUN dos2unix /src/util/genfsimg
 RUN chmod +x /src/util/genfsimg
 
-RUN dos2unix /src/util/elf2efi64
 RUN chmod +x /src/util/elf2efi64
 
 RUN dos2unix /src/util/zbin
