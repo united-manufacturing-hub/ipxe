@@ -10,6 +10,12 @@ RUN echo "Copying files"
 
 COPY src /src
 
+# Generating elf2efi
+RUN git clone https://github.com/davmac314/elf2efi.git
+RUN cd elf2efi
+RUN make -j
+RUN cp elf2efi64 /src/util/elf2efi64
+
 RUN echo "Fixing files"
 RUN dos2unix /src/util/genfsimg
 RUN chmod +x /src/util/genfsimg
@@ -22,8 +28,5 @@ RUN chmod +x /src/util/zbin
 COPY make.sh /make.sh
 RUN chmod +x /make.sh
 
-# Generating elf2efi
-RUN git clone https://github.com/davmac314/elf2efi.git
-RUN cd elf2efi && make && cp elf2efi64 /src/util/elf2efi64
 
 ENTRYPOINT ["/bin/sh", "-c", "/make.sh"]
