@@ -1,9 +1,5 @@
 # UMH BOOTLOADER
 
-Make with
-```shell
-cd src
-make bin-x86_64-efi/ipxe.iso EMBED=embed.ipxe CERT=ca.pem,isrgrootx1.pem,lets-encrypt-r3.pem TRUST=ca.pem,isrgrootx1.pem,lets-encrypt-r3.pem
-```
+Make by running the make.ps1 script.
 
 For any more detailed instructions, see http://ipxe.org
