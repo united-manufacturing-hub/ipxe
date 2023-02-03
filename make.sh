@@ -1,5 +1,6 @@
 cd /src
 
+
 echo "Building x86_64-efi"
 make -j bin-x86_64-efi/ipxe.iso EMBED=embed.ipxe CERT=ca.pem,isrgrootx1.pem,lets-encrypt-r3.pem TRUST=ca.pem,isrgrootx1.pem,lets-encrypt-r3.pem
 make -j bin-x86_64-efi/ipxe.usb EMBED=embed.ipxe CERT=ca.pem,isrgrootx1.pem,lets-encrypt-r3.pem TRUST=ca.pem,isrgrootx1.pem,lets-encrypt-r3.pem

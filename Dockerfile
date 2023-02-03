@@ -18,6 +18,9 @@ RUN echo "Fixing files"
 RUN dos2unix /src/util/genfsimg
 RUN chmod +x /src/util/genfsimg
 
+RUN echo "Building dependencies"
+RUN make -j all
+
 RUN chmod +x /src/util/elf2efi64
 
 RUN dos2unix /src/util/zbin
