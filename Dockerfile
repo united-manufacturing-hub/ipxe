@@ -10,10 +10,14 @@ RUN apt-get update -y && apt-get install apt-transport-https apt-utils -y
 RUN apt-get upgrade -y
 RUN apt-get update -y && apt-get install -y gcc binutils make perl-base liblzma-dev mtools genisoimage syslinux dos2unix isolinux qemu-utils gcc-aarch64-linux-gnu git
 
+# Clone iPXE
+RUN echo "Cloning iPXE"
+RUN git clone https://github.com/ipxe/ipxe.git /ipxe
 
 RUN echo "Copying files"
+RUN mkdir /src
+RUN cp -r /ipxe/src /src
 
-COPY ipxe/src /src
 COPY config/embed.ipxe /src/embed.ipxe
 COPY config/ipxe.iso /src/ipxe.iso
 COPY config/isrg-root-x2.pem /src/isrg-root-x2.pem
