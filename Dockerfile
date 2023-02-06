@@ -13,7 +13,14 @@ RUN apt-get update -y && apt-get install -y gcc binutils make perl-base liblzma-
 
 RUN echo "Copying files"
 
-COPY src /src
+COPY ipxe/src /src
+COPY config/embed.ipxe /src/embed.ipxe
+COPY config/ipxe.iso /src/ipxe.iso
+COPY config/isrg-root-x2.pem /src/isrg-root-x2.pem
+COPY config/isrgrootx1.pem /src/isrgrootx1.pem
+COPY config/lets-encrypt-r3.pem /src/lets-encrypt-r3.pem
+COPY config/ca.pem /src/ca.pem
+COPY config/general.h /src/config/general.h
 
 # Generating elf2efi
 RUN git clone https://github.com/davmac314/elf2efi.git
