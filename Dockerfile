@@ -7,7 +7,9 @@ RUN cat /etc/apt/sources.list
 
 
 RUN apt-get update -y && apt-get install apt-transport-https apt-utils -y
+RUN apt-get upgrade -y
 RUN apt-get update -y && apt-get install -y gcc binutils make perl-base liblzma-dev mtools genisoimage syslinux dos2unix isolinux qemu-utils gcc-aarch64-linux-gnu git
+
 
 RUN echo "Copying files"
 
@@ -21,6 +23,8 @@ RUN echo "Fixing files"
 RUN dos2unix /src/util/genfsimg
 RUN chmod +x /src/util/genfsimg
 
+RUN chmod +x /src/util/zbin
+
 WORKDIR /src
 RUN echo "Building dependencies"
 RUN make -j all
@@ -28,7 +32,6 @@ WORKDIR /
 
 RUN chmod +x /src/util/elf2efi64
 
-RUN dos2unix /src/util/zbin
 RUN chmod +x /src/util/zbin
 
 COPY make.sh /make.sh
