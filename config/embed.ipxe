@@ -1,29 +1,113 @@
 #!ipxe
-echo ~~~ Welcome ~~~
-echo Welcome the United Manufacturing Hub bootloader
-echo More information can be found on our website: www.umh.app
-echo
-echo
-echo ~~~ DHCP ~~~
-dhcp && goto dns || goto dhcperror
+
+:menu
+menu Networking
+item --gap -- Serial: ${serial}
+item --gap -- MAC: ${mac}
+item --gap -- UUID: ${uuid}
+item dhcpip DHCP IP
+item staticip Static IP
+item advancedip Advanced IP settings
+choose target && goto ${target} || reboot
+
+:dhcpip
+dhcp && goto validateip || goto dhcperror
 
 :dhcperror
-prompt --key s --timeout 10000 DHCP failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
+menu DHCP failure
+item --gap -- Serial: ${serial}
+item --gap -- MAC: ${mac}
+item --gap -- UUID: ${uuid}
+item --gap -- Hostname: ${hostname}
+item dhcpip Retry DHCP
+item staticip Static IP
+item advancedip Advanced IP settings
+item reboot Reboot
+choose --default reboot --timeout 3000 target && goto ${target} || goto menu
 
-:dns
-echo ~~~ DNS ~~~
-echo Waiting for DNS...
-sleep 5
-console --picture http://boot.ipxe.org/ipxe.png
-echo Got DNS!
-goto netboot
+:reboot
+reboot
 
-:dnserror
-prompt --key s --timeout 10000 DNS failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
+:staticip
+echo -n IP address: && read net0/ip || goto menu
+echo -n Subnet mask: && read net0/netmask || goto menu
+echo -n Default gateway: && read net0/gateway || goto menu
+echo -n DNS server: && read net0/dns || goto menu
+goto validateip
 
-:netboot
-echo
-echo
+:advancedip
+config net0
+goto confirmnet
+
+:confirmnet
+echo ~~~ Network information ~~~
+echo Hostname: ${hostname}
+echo IP: ${ip}
+echo Netmask: ${netmask}
+echo Gateway: ${gateway}
+echo DNS: ${dns}
+echo -n Confirm network settings? [y/N] && read confirm || goto menu
+iseq ${answer} Y && goto validateip ||
+iseq ${answer} y && goto validateip ||
+goto menu
+
+:validateip
+nslookup ${address} deploy.umh.app && goto settings || goto iperror
+
+:iperror
+menu Network failure
+item --gap -- Serial: ${serial}
+item --gap -- MAC: ${mac}
+item --gap -- UUID: ${uuid}
+item --gap -- Hostname: ${hostname}
+item --gap -- IP: ${ip}
+item --gap -- Netmask: ${netmask}
+item --gap -- Gateway: ${gateway}
+item --gap -- DNS: ${dns}
+item dhcpip Retry DHCP
+item staticip Static IP
+item advancedip Advanced IP settings
+item reboot Reboot
+choose --default reboot --timeout 3000 target && goto ${target} || goto menu
+
+:settings
+console --picture http://boot.ipxe.org/texture.png
+menu Install options
+item installsda Install to SDA
+item installhda Install to HDA
+item installvda Install to VDA
+item installnvme Install to NVMe
+item customtoken Custom token
+choose target && goto ${target} || goto menu
+
+:installsda
+echo Installing to SDA
+set token sda
+goto boot
+
+:installhda
+echo Installing to HDA
+set token hda
+goto boot
+
+:installvda
+echo Installing to VDA
+set token vda
+goto boot
+
+:installnvme
+echo Installing to NVMe
+set token nvme
+goto boot
+
+:customtoken
+echo ~~~ Individual configuration ~~~
+echo Please enter your customer token (or press ENTER for default):
+read token || goto menu
+goto boot
+
+:boot
+console
 echo ~~~ System information ~~~
 echo Serial: ${serial}
 echo MAC address: ${mac}
@@ -36,14 +120,5 @@ echo IP: ${ip}
 echo Netmask: ${netmask}
 echo Gateway: ${gateway}
 echo DNS: ${dns}
-echo
-echo
-echo ~~~ Individual configuration ~~~
-echo Please enter your customer token (or press ENTER for default):
-read token || set token default
-echo
-echo
-echo ~~~ Boot ~~~
-echo Booting...
 chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token} ||
 prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
