@@ -2,9 +2,7 @@ FROM docker.io/ubuntu:latest
 
 RUN echo "Installing dependencies"
 
-RUN apt-get update -y
-RUN apt-get install -y gcc binutils make perl-base liblzma-dev mtools genisoimage syslinux dos2unix isolinux qemu-utils gcc-aarch64-linux-gnu git
-RUN apt-get upgrade -y
+RUN apt-get update -y && apt-get install -y gcc binutils make perl-base liblzma-dev mtools genisoimage syslinux dos2unix isolinux qemu-utils gcc-aarch64-linux-gnu git && apt-get upgrade -y
 
 RUN echo "Copying files"
 

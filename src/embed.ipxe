@@ -2,8 +2,8 @@
 echo ~~~ Welcome ~~~
 echo Welcome the United Manufacturing Hub bootloader
 echo More information can be found on our website: www.umh.app
-echo  
-echo  
+echo
+echo
 echo ~~~ DHCP ~~~
 dhcp && goto netboot || goto dhcperror
 
@@ -11,8 +11,8 @@ dhcp && goto netboot || goto dhcperror
 prompt --key s --timeout 10000 DHCP failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
 
 :netboot
-echo 
-echo 
+echo
+echo
 echo ~~~ System information ~~~
 echo Serial: ${serial}
 echo MAC address: ${mac}
@@ -25,13 +25,13 @@ echo IP: ${ip}
 echo Netmask: ${netmask}
 echo Gateway: ${gateway}
 echo DNS: ${dns}
-echo  
-echo 
+echo
+echo
 echo ~~~ Individual configuration ~~~
-echo Please enter your customer token (or wait 10s for default):
+echo Please enter your customer token (or press ENTER for default):
 read token || set token default
-echo  
-echo 
+echo
+echo
 echo ~~~ Boot ~~~
 echo Booting...
 chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token} ||
