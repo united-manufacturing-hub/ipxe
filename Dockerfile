@@ -18,12 +18,11 @@ RUN echo "Cloning iPXE"
 RUN git clone https://github.com/ipxe/ipxe.git /ipxe
 
 RUN echo "Copying files"
-RUN mkdir /src
 RUN cp -r /ipxe/src /src
 
 # Generating elf2efi
 RUN git clone https://github.com/davmac314/elf2efi.git
-RUN cd elf2efi && make -j && cp elf2efi64 /src/util/elf2efi64
+RUN cd elf2efi && make -j && ls -lah && cp elf2efi64 /src/util/elf2efi64
 
 RUN echo "Fixing files"
 RUN dos2unix /src/util/genfsimg
