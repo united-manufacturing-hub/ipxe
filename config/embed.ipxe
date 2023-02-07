@@ -1,5 +1,22 @@
 #!ipxe
 
+:menu License
+item --gap -- This software was build using iPXE (https://ipxe.org)
+item --gap -- iPXE is free software: you can redistribute it and/or modify
+item --gap -- it under the terms of the GNU General Public License as published by
+item --gap -- the Free Software Foundation, either version 2 of the License, or
+item --gap -- (at your option) any later version.
+item --gap -- iPXE is distributed in the hope that it will be useful,
+item --gap -- but WITHOUT ANY WARRANTY; without even the implied warranty of
+item --gap -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+item --gap -- GNU General Public License for more details.
+item --gap -- You should have received a copy of the GNU General Public License
+item --gap -- along with iPXE.  If not, see <http://www.gnu.org/licenses/>.
+item --gap --
+item --key c continue (C)ontinue [Default]
+item --key r reboot (R)eboot
+choose --default continue --timeout 30000 target && goto ${target} || reboot
+
 :menu
 menu Networking
 item --gap -- Serial: ${serial}

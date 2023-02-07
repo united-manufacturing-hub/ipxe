@@ -31,4 +31,4 @@ cp bin-arm64-efi/ipxe.usb /output/ipxe-arm64-efi.usb
 
 # Generate SHA256 sum for each file
 cd /output || exit 1
-sha256sum * > sha256sum.txt
+sha256sum ./* > sha256sum.txt
