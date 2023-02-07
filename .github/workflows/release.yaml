@@ -1,0 +1,22 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  # Execute Dockerfile
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker run -v $(pwd)/output:/output $(docker build -q .)
+      # Create release with all files in output folder
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: output/*
+
