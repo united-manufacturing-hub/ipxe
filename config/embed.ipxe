@@ -92,7 +92,7 @@ menu Install options
 item --key s installsda Install to (S)DA [Default]
 item --key h installhda Install to (H)DA
 item --key v installvda Install to (V)DA
-item --key n installnvme Install to (N)VMe
+item --key n --default installnvme Install to (N)VMe
 item --key c customtoken (C)ustom token
 choose --default installsda --timeout 30000 target && goto ${target} || goto menu
 
@@ -172,8 +172,8 @@ item --gap --
 item --gap --                             Preamble
 item --gap --
 item --gap --   The GNU General Public License is a free, copyleft license for
+item --key n --default license2 (N)ext page
 item --key m entrypoint Return to (m)ain menu
-item --key n license2 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license2
@@ -188,9 +188,10 @@ item --gap -- software for all its users.  We, the Free Software Foundation, use
 item --gap -- GNU General Public License for most of our software; it applies also to
 item --gap -- any other work released this way by its authors.  You can apply it to
 item --gap -- your programs, too.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license3 (N)ext page
 item --key p license1 (P)revious page
-item --key n license3 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license3
@@ -205,9 +206,10 @@ item --gap -- free programs, and that you know you can do these things.
 item --gap --
 item --gap --   To protect your rights, we need to prevent others from denying you
 item --gap -- these rights or asking you to surrender the rights.  Therefore, you have
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license4 (N)ext page
 item --key p license2 (P)revious page
-item --key n license4 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license4
@@ -222,9 +224,10 @@ item --gap -- or can get the source code.  And you must show them these terms so
 item --gap -- know their rights.
 item --gap --
 item --gap --   Developers that use the GNU GPL protect your rights with two steps:
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license5 (N)ext page
 item --key p license3 (P)revious page
-item --key n license5 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license5
@@ -239,9 +242,10 @@ item --gap -- changed, so that their problems will not be attributed erroneously
 item --gap -- authors of previous versions.
 item --gap --
 item --gap --   Some devices are designed to deny users access to install or run
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license6 (N)ext page
 item --key p license4 (P)revious page
-item --key n license6 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license6
@@ -256,9 +260,10 @@ item --gap -- products.  If such problems arise substantially in other domains, 
 item --gap -- stand ready to extend this provision to those domains in future versions
 item --gap -- of the GPL, as needed to protect the freedom of users.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license7 (N)ext page
 item --key p license5 (P)revious page
-item --key n license7 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license7
@@ -273,9 +278,10 @@ item --gap --
 item --gap --   The precise terms and conditions for copying, distribution and
 item --gap -- modification follow.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license8 (N)ext page
 item --key p license6 (P)revious page
-item --key n license8 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license8
@@ -290,9 +296,10 @@ item --gap --   "Copyright" also means copyright-like laws that apply to other k
 item --gap -- works, such as semiconductor masks.
 item --gap --
 item --gap --   "The Program" refers to any copyrightable work licensed under this
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license9 (N)ext page
 item --key p license7 (P)revious page
-item --key n license9 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license9
@@ -307,9 +314,10 @@ item --gap -- earlier work or a work "based on" the earlier work.
 item --gap --
 item --gap --   A "covered work" means either the unmodified Program or a work based
 item --gap -- on the Program.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license10 (N)ext page
 item --key p license8 (P)revious page
-item --key n license10 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license10
@@ -324,9 +332,10 @@ item --gap -- public, and in some countries other activities as well.
 item --gap --
 item --gap --   To "convey" a work means any kind of propagation that enables other
 item --gap -- parties to make or receive copies.  Mere interaction with a user through
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license11 (N)ext page
 item --key p license9 (P)revious page
-item --key n license11 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license11
@@ -341,9 +350,10 @@ item --gap -- extent that warranties are provided), that licensees may convey th
 item --gap -- work under this License, and how to view a copy of this License.  If
 item --gap -- the interface presents a list of user commands or options, such as a
 item --gap -- menu, a prominent item in the list meets this criterion.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license12 (N)ext page
 item --key p license10 (P)revious page
-item --key n license12 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license12
@@ -358,9 +368,10 @@ item --gap --
 item --gap --   A "Standard Interface" means an interface that either is an official
 item --gap -- standard defined by a recognized standards body, or, in the case of
 item --gap -- interfaces specified for a particular programming language, one that
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license13 (N)ext page
 item --key p license11 (P)revious page
-item --key n license13 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license13
@@ -375,9 +386,10 @@ item --gap -- Major Component, or to implement a Standard Interface for which an
 item --gap -- implementation is available to the public in source code form.  A
 item --gap -- "Major Component", in this context, means a major essential component
 item --gap -- (kernel, window system, and so on) of the specific operating system
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license14 (N)ext page
 item --key p license12 (P)revious page
-item --key n license14 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license14
@@ -392,9 +404,10 @@ item --gap -- control those activities.  However, it does not include the work's
 item --gap -- System Libraries, or general-purpose tools or generally available free
 item --gap -- programs which are used unmodified in performing those activities but
 item --gap -- which are not part of the work.  For example, Corresponding Source
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license15 (N)ext page
 item --key p license13 (P)revious page
-item --key n license15 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license15
@@ -409,9 +422,10 @@ item --gap --   The Corresponding Source need not include anything that users
 item --gap -- can regenerate automatically from other parts of the Corresponding
 item --gap -- Source.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license16 (N)ext page
 item --key p license14 (P)revious page
-item --key n license16 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license16
@@ -426,9 +440,10 @@ item --gap -- copyright on the Program, and are irrevocable provided the stated
 item --gap -- conditions are met.  This License explicitly affirms your unlimited
 item --gap -- permission to run the unmodified Program.  The output from running a
 item --gap -- covered work is covered by this License only if the output, given its
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license17 (N)ext page
 item --key p license15 (P)revious page
-item --key n license17 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license17
@@ -443,9 +458,10 @@ item --gap -- of having them make modifications exclusively for you, or provide 
 item --gap -- with facilities for running those works, provided that you comply with
 item --gap -- the terms of this License in conveying all material for which you do
 item --gap -- not control copyright.  Those thus making or running the covered works
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license18 (N)ext page
 item --key p license16 (P)revious page
-item --key n license18 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license18
@@ -460,9 +476,10 @@ item --gap -- makes it unnecessary.
 item --gap --
 item --gap --   3. Protecting Users' Legal Rights From Anti-Circumvention Law.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license19 (N)ext page
 item --key p license17 (P)revious page
-item --key n license19 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license19
@@ -477,9 +494,10 @@ item --gap --   When you convey a covered work, you waive any legal power to for
 item --gap -- circumvention of technological measures to the extent such circumvention
 item --gap -- is effected by exercising rights under this License with respect to
 item --gap -- the covered work, and you disclaim any intention to limit operation or
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license20 (N)ext page
 item --key p license18 (P)revious page
-item --key n license20 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license20
@@ -494,9 +512,10 @@ item --gap --   You may convey verbatim copies of the Program's source code as y
 item --gap -- receive it, in any medium, provided that you conspicuously and
 item --gap -- appropriately publish on each copy an appropriate copyright notice;
 item --gap -- keep intact all notices stating that this License and any
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license21 (N)ext page
 item --key p license19 (P)revious page
-item --key n license21 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license21
@@ -511,9 +530,10 @@ item --gap --
 item --gap --   5. Conveying Modified Source Versions.
 item --gap --
 item --gap --   You may convey a work based on the Program, or the modifications to
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license22 (N)ext page
 item --key p license20 (P)revious page
-item --key n license22 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license22
@@ -528,9 +548,10 @@ item --gap --     b) The work must carry prominent notices stating that it is
 item --gap --     released under this License and any conditions added under section
 item --gap --     7.  This requirement modifies the requirement in section 4 to
 item --gap --     "keep intact all notices".
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license23 (N)ext page
 item --key p license21 (P)revious page
-item --key n license23 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license23
@@ -545,9 +566,10 @@ item --gap --     permission to license the work in any other way, but it does n
 item --gap --     invalidate such permission if you have separately received it.
 item --gap --
 item --gap --     d) If the work has interactive user interfaces, each must display
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license24 (N)ext page
 item --key p license22 (P)revious page
-item --key n license24 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license24
@@ -562,9 +584,10 @@ item --gap -- and which are not combined with it such as to form a larger progra
 item --gap -- in or on a volume of a storage or distribution medium, is called an
 item --gap -- "aggregate" if the compilation and its resulting copyright are not
 item --gap -- used to limit the access or legal rights of the compilation's users
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license25 (N)ext page
 item --key p license23 (P)revious page
-item --key n license25 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license25
@@ -579,9 +602,10 @@ item --gap --   You may convey a covered work in object code form under the term
 item --gap -- of sections 4 and 5, provided that you also convey the
 item --gap -- machine-readable Corresponding Source under the terms of this License,
 item --gap -- in one of these ways:
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license26 (N)ext page
 item --key p license24 (P)revious page
-item --key n license26 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license26
@@ -596,9 +620,10 @@ item --gap --     b) Convey the object code in, or embodied in, a physical produ
 item --gap --     (including a physical distribution medium), accompanied by a
 item --gap --     written offer, valid for at least three years and valid for as
 item --gap --     long as you offer spare parts or customer support for that product
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license27 (N)ext page
 item --key p license25 (P)revious page
-item --key n license27 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license27
@@ -613,9 +638,10 @@ item --gap --     Corresponding Source from a network server at no charge.
 item --gap --
 item --gap --     c) Convey individual copies of the object code with a copy of the
 item --gap --     written offer to provide the Corresponding Source.  This
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license28 (N)ext page
 item --key p license26 (P)revious page
-item --key n license28 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license28
@@ -630,9 +656,10 @@ item --gap --     Corresponding Source in the same way through the same place at
 item --gap --     further charge.  You need not require recipients to copy the
 item --gap --     Corresponding Source along with the object code.  If the place to
 item --gap --     copy the object code is a network server, the Corresponding Source
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license29 (N)ext page
 item --key p license27 (P)revious page
-item --key n license29 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license29
@@ -647,9 +674,10 @@ item --gap --
 item --gap --     e) Convey the object code using peer-to-peer transmission, provided
 item --gap --     you inform other peers where the object code and Corresponding
 item --gap --     Source of the work are being offered to the general public at no
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license30 (N)ext page
 item --key p license28 (P)revious page
-item --key n license30 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license30
@@ -664,9 +692,10 @@ item --gap --   A "User Product" is either (1) a "consumer product", which means
 item --gap -- tangible personal property which is normally used for personal, family,
 item --gap -- or household purposes, or (2) anything designed or sold for incorporation
 item --gap -- into a dwelling.  In determining whether a product is a consumer product,
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license31 (N)ext page
 item --key p license29 (P)revious page
-item --key n license31 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license31
@@ -681,9 +710,10 @@ item --gap -- commercial, industrial or non-consumer uses, unless such uses repr
 item --gap -- the only significant mode of use of the product.
 item --gap --
 item --gap --   "Installation Information" for a User Product means any methods,
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license32 (N)ext page
 item --key p license30 (P)revious page
-item --key n license32 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license32
@@ -698,9 +728,10 @@ item --gap --
 item --gap --   If you convey an object code work under this section in, or with, or
 item --gap -- specifically for use in, a User Product, and the conveying occurs as
 item --gap -- part of a transaction in which the right of possession and use of the
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license33 (N)ext page
 item --key p license31 (P)revious page
-item --key n license33 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license33
@@ -715,9 +746,10 @@ item --gap -- been installed in ROM).
 item --gap --
 item --gap --   The requirement to provide Installation Information does not include a
 item --gap -- requirement to continue to provide support service, warranty, or updates
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license34 (N)ext page
 item --key p license32 (P)revious page
-item --key n license34 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license34
@@ -732,9 +764,10 @@ item --gap --   Corresponding Source conveyed, and Installation Information prov
 item --gap -- in accord with this section must be in a format that is publicly
 item --gap -- documented (and with an implementation available to the public in
 item --gap -- source code form), and must require no special password or key for
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license35 (N)ext page
 item --key p license33 (P)revious page
-item --key n license35 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license35
@@ -749,9 +782,10 @@ item --gap -- Additional permissions that are applicable to the entire Program s
 item --gap -- be treated as though they were included in this License, to the extent
 item --gap -- that they are valid under applicable law.  If additional permissions
 item --gap -- apply only to part of the Program, that part may be used separately
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license36 (N)ext page
 item --key p license34 (P)revious page
-item --key n license36 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license36
@@ -766,9 +800,10 @@ item --gap -- removal in certain cases when you modify the work.)  You may place
 item --gap -- additional permissions on material, added by you to a covered work,
 item --gap -- for which you have or can give appropriate copyright permission.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license37 (N)ext page
 item --key p license35 (P)revious page
-item --key n license37 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license37
@@ -783,9 +818,10 @@ item --gap --
 item --gap --     b) Requiring preservation of specified reasonable legal notices or
 item --gap --     author attributions in that material or in the Appropriate Legal
 item --gap --     Notices displayed by works containing it; or
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license38 (N)ext page
 item --key p license36 (P)revious page
-item --key n license38 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license38
@@ -800,9 +836,10 @@ item --gap --     authors of the material; or
 item --gap --
 item --gap --     e) Declining to grant rights under trademark law for use of some
 item --gap --     trade names, trademarks, or service marks; or
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license39 (N)ext page
 item --key p license37 (P)revious page
-item --key n license39 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license39
@@ -817,9 +854,10 @@ item --gap --
 item --gap --   All other non-permissive additional terms are considered "further
 item --gap -- restrictions" within the meaning of section 10.  If the Program as you
 item --gap -- received it, or any part of it, contains a notice stating that it is
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license40 (N)ext page
 item --key p license38 (P)revious page
-item --key n license40 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license40
@@ -834,9 +872,10 @@ item --gap --
 item --gap --   If you add terms to a covered work in accord with this section, you
 item --gap -- must place, in the relevant source files, a statement of the
 item --gap -- additional terms that apply to those files, or a notice indicating
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license41 (N)ext page
 item --key p license39 (P)revious page
-item --key n license41 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license41
@@ -851,9 +890,10 @@ item --gap --   8. Termination.
 item --gap --
 item --gap --   You may not propagate or modify a covered work except as expressly
 item --gap -- provided under this License.  Any attempt otherwise to propagate or
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license42 (N)ext page
 item --key p license40 (P)revious page
-item --key n license42 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license42
@@ -868,9 +908,10 @@ item --gap -- provisionally, unless and until the copyright holder explicitly an
 item --gap -- finally terminates your license, and (b) permanently, if the copyright
 item --gap -- holder fails to notify you of the violation by some reasonable means
 item --gap -- prior to 60 days after the cessation.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license43 (N)ext page
 item --key p license41 (P)revious page
-item --key n license43 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license43
@@ -885,9 +926,10 @@ item --gap -- your receipt of the notice.
 item --gap --
 item --gap --   Termination of your rights under this section does not terminate the
 item --gap -- licenses of parties who have received copies or rights from you under
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license44 (N)ext page
 item --key p license42 (P)revious page
-item --key n license44 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license44
@@ -902,9 +944,10 @@ item --gap --   You are not required to accept this License in order to receive 
 item --gap -- run a copy of the Program.  Ancillary propagation of a covered work
 item --gap -- occurring solely as a consequence of using peer-to-peer transmission
 item --gap -- to receive a copy likewise does not require acceptance.  However,
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license45 (N)ext page
 item --key p license43 (P)revious page
-item --key n license45 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license45
@@ -919,9 +962,10 @@ item --gap --
 item --gap --   Each time you convey a covered work, the recipient automatically
 item --gap -- receives a license from the original licensors, to run, modify and
 item --gap -- propagate that work, subject to this License.  You are not responsible
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license46 (N)ext page
 item --key p license44 (P)revious page
-item --key n license46 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license46
@@ -936,9 +980,10 @@ item --gap -- transaction who receives a copy of the work also receives whatever
 item --gap -- licenses to the work the party's predecessor in interest had or could
 item --gap -- give under the previous paragraph, plus a right to possession of the
 item --gap -- Corresponding Source of the work from the predecessor in interest, if
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license47 (N)ext page
 item --key p license45 (P)revious page
-item --key n license47 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license47
@@ -953,9 +998,10 @@ item --gap -- (including a cross-claim or counterclaim in a lawsuit) alleging th
 item --gap -- any patent claim is infringed by making, using, selling, offering for
 item --gap -- sale, or importing the Program or any portion of it.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license48 (N)ext page
 item --key p license46 (P)revious page
-item --key n license48 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license48
@@ -970,9 +1016,10 @@ item --gap --   A contributor's "essential patent claims" are all patent claims
 item --gap -- owned or controlled by the contributor, whether already acquired or
 item --gap -- hereafter acquired, that would be infringed by some manner, permitted
 item --gap -- by this License, of making, using, or selling its contributor version,
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license49 (N)ext page
 item --key p license47 (P)revious page
-item --key n license49 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license49
@@ -987,9 +1034,10 @@ item --gap --   Each contributor grants you a non-exclusive, worldwide, royalty-
 item --gap -- patent license under the contributor's essential patent claims, to
 item --gap -- make, use, sell, offer for sale, import and otherwise run, modify and
 item --gap -- propagate the contents of its contributor version.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license50 (N)ext page
 item --key p license48 (P)revious page
-item --key n license50 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license50
@@ -1004,9 +1052,10 @@ item --gap -- patent against the party.
 item --gap --
 item --gap --   If you convey a covered work, knowingly relying on a patent license,
 item --gap -- and the Corresponding Source of the work is not available for anyone
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license51 (N)ext page
 item --key p license49 (P)revious page
-item --key n license51 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license51
@@ -1021,9 +1070,10 @@ item --gap -- license to downstream recipients.  "Knowingly relying" means you h
 item --gap -- actual knowledge that, but for the patent license, your conveying the
 item --gap -- covered work in a country, or your recipient's use of the covered work
 item --gap -- in a country, would infringe one or more identifiable patents in that
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license52 (N)ext page
 item --key p license50 (P)revious page
-item --key n license52 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license52
@@ -1038,9 +1088,10 @@ item --gap -- or convey a specific copy of the covered work, then the patent lic
 item --gap -- you grant is automatically extended to all recipients of the covered
 item --gap -- work and works based on it.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license53 (N)ext page
 item --key p license51 (P)revious page
-item --key n license53 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license53
@@ -1055,9 +1106,10 @@ item --gap -- to the third party based on the extent of your activity of conveyi
 item --gap -- the work, and under which the third party grants, to any of the
 item --gap -- parties who would receive the covered work from you, a discriminatory
 item --gap -- patent license (a) in connection with copies of the covered work
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license54 (N)ext page
 item --key p license52 (P)revious page
-item --key n license54 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license54
@@ -1072,9 +1124,10 @@ item --gap -- any implied license or other defenses to infringement that may
 item --gap -- otherwise be available to you under applicable patent law.
 item --gap --
 item --gap --   12. No Surrender of Others' Freedom.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license55 (N)ext page
 item --key p license53 (P)revious page
-item --key n license55 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license55
@@ -1089,9 +1142,10 @@ item --gap -- not convey it at all.  For example, if you agree to terms that obl
 item --gap -- to collect a royalty for further conveying from those to whom you convey
 item --gap -- the Program, the only way you could satisfy both those terms and this
 item --gap -- License would be to refrain entirely from conveying the Program.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license56 (N)ext page
 item --key p license54 (P)revious page
-item --key n license56 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license56
@@ -1106,9 +1160,10 @@ item --gap -- combined work, and to convey the resulting work.  The terms of thi
 item --gap -- License will continue to apply to the part which is the covered work,
 item --gap -- but the special requirements of the GNU Affero General Public License,
 item --gap -- section 13, concerning interaction through a network will apply to the
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license57 (N)ext page
 item --key p license55 (P)revious page
-item --key n license57 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license57
@@ -1123,9 +1178,10 @@ item --gap -- be similar in spirit to the present version, but may differ in det
 item --gap -- address new problems or concerns.
 item --gap --
 item --gap --   Each version is given a distinguishing version number.  If the
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license58 (N)ext page
 item --key p license56 (P)revious page
-item --key n license58 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license58
@@ -1140,9 +1196,10 @@ item --gap -- by the Free Software Foundation.
 item --gap --
 item --gap --   If the Program specifies that a proxy can decide which future
 item --gap -- versions of the GNU General Public License can be used, that proxy's
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license59 (N)ext page
 item --key p license57 (P)revious page
-item --key n license59 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license59
@@ -1157,9 +1214,10 @@ item --gap -- later version.
 item --gap --
 item --gap --   15. Disclaimer of Warranty.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license60 (N)ext page
 item --key p license58 (P)revious page
-item --key n license60 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license60
@@ -1174,9 +1232,10 @@ item --gap -- IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE C
 item --gap -- ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
 item --gap --
 item --gap --   16. Limitation of Liability.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license61 (N)ext page
 item --key p license59 (P)revious page
-item --key n license61 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license61
@@ -1191,9 +1250,10 @@ item --gap -- DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU 
 item --gap -- PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
 item --gap -- EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
 item --gap -- SUCH DAMAGES.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license62 (N)ext page
 item --key p license60 (P)revious page
-item --key n license62 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license62
@@ -1208,9 +1268,10 @@ item --gap -- an absolute waiver of all civil liability in connection with the
 item --gap -- Program, unless a warranty or assumption of liability accompanies a
 item --gap -- copy of the Program in return for a fee.
 item --gap --
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license63 (N)ext page
 item --key p license61 (P)revious page
-item --key n license63 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license63
@@ -1225,9 +1286,10 @@ item --gap -- free software which everyone can redistribute and change under the
 item --gap --
 item --gap --   To do so, attach the following notices to the program.  It is safest
 item --gap -- to attach them to the start of each source file to most effectively
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license64 (N)ext page
 item --key p license62 (P)revious page
-item --key n license64 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license64
@@ -1242,9 +1304,10 @@ item --gap --     This program is free software: you can redistribute it and/or 
 item --gap --     it under the terms of the GNU General Public License as published by
 item --gap --     the Free Software Foundation, either version 3 of the License, or
 item --gap --     (at your option) any later version.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license65 (N)ext page
 item --key p license63 (P)revious page
-item --key n license65 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license65
@@ -1259,9 +1322,10 @@ item --gap --     You should have received a copy of the GNU General Public Lice
 item --gap --     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 item --gap --
 item --gap -- Also add information on how to contact you by electronic and paper mail.
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license66 (N)ext page
 item --key p license64 (P)revious page
-item --key n license66 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license66
@@ -1276,9 +1340,10 @@ item --gap --     This is free software, and you are welcome to redistribute it
 item --gap --     under certain conditions; type `show c' for details.
 item --gap --
 item --gap -- The hypothetical commands `show w' and `show c' should show the appropriate
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license67 (N)ext page
 item --key p license65 (P)revious page
-item --key n license67 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license67
@@ -1293,9 +1358,10 @@ item --gap -- <https://www.gnu.org/licenses/>.
 item --gap --
 item --gap --   The GNU General Public License does not permit incorporating your program
 item --gap -- into proprietary programs.  If your program is a subroutine library, you
-item --key m entrypoint Return to (m)ain menu
+item --key n --default license68 (N)ext page
 item --key p license66 (P)revious page
-item --key n license68 (N)ext page
+item --key m entrypoint Return to (m)ain menu
+
 choose --default n target && goto ${target} || goto license
 
 :license68
@@ -1304,7 +1370,7 @@ item --gap -- may consider it more useful to permit linking proprietary applicat
 item --gap -- the library.  If this is what you want to do, use the GNU Lesser General
 item --gap -- Public License instead of this License.  But first, please read
 item --gap -- <https://www.gnu.org/licenses/why-not-lgpl.html>.
-item --key m entrypoint Return to (m)ain menu
 item --key p license67 (P)revious page
+item --key m entrypoint Return to (m)ain menu
 choose --default n target && goto ${target} || goto license
 
