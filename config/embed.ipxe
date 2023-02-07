@@ -161,6 +161,7 @@ item --key q reboot (Q)uit
 choose --default r target && goto ${target} || reboot
 
 :license1
+menu GNU General Public License
 item --gap -- GNU GENERAL PUBLIC LICENSE
 item --gap --                        Version 3, 29 June 2007
 item --gap --
@@ -176,6 +177,7 @@ item --key n license2 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license2
+menu GNU General Public License
 item --gap -- software and other kinds of works.
 item --gap --
 item --gap --   The licenses for most software and other practical works are designed
@@ -192,6 +194,7 @@ item --key n license3 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license3
+menu GNU General Public License
 item --gap --
 item --gap --   When we speak of free software, we are referring to freedom, not
 item --gap -- price.  Our General Public Licenses are designed to make sure that you
@@ -208,6 +211,7 @@ item --key n license4 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license4
+menu GNU General Public License
 item --gap -- certain responsibilities if you distribute copies of the software, or if
 item --gap -- you modify it: responsibilities to respect the freedom of others.
 item --gap --
@@ -224,6 +228,7 @@ item --key n license5 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license5
+menu GNU General Public License
 item --gap -- (1) assert copyright on the software, and (2) offer you this License
 item --gap -- giving you legal permission to copy, distribute and/or modify it.
 item --gap --
@@ -240,6 +245,7 @@ item --key n license6 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license6
+menu GNU General Public License
 item --gap -- modified versions of the software inside them, although the manufacturer
 item --gap -- can do so.  This is fundamentally incompatible with the aim of
 item --gap -- protecting users' freedom to change the software.  The systematic
@@ -256,6 +262,7 @@ item --key n license7 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license7
+menu GNU General Public License
 item --gap --   Finally, every program is threatened constantly by software patents.
 item --gap -- States should not allow patents to restrict development and use of
 item --gap -- software on general-purpose computers, but in those that do, we wish to
@@ -272,6 +279,7 @@ item --key n license8 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license8
+menu GNU General Public License
 item --gap --                        TERMS AND CONDITIONS
 item --gap --
 item --gap --   0. Definitions.
@@ -288,6 +296,7 @@ item --key n license9 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license9
+menu GNU General Public License
 item --gap -- License.  Each licensee is addressed as "you".  "Licensees" and
 item --gap -- "recipients" may be individuals or organizations.
 item --gap --
@@ -304,6 +313,7 @@ item --key n license10 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license10
+menu GNU General Public License
 item --gap --
 item --gap --   To "propagate" a work means to do anything with it that, without
 item --gap -- permission, would make you directly or secondarily liable for
@@ -320,6 +330,7 @@ item --key n license11 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license11
+menu GNU General Public License
 item --gap -- a computer network, with no transfer of a copy, is not conveying.
 item --gap --
 item --gap --   An interactive user interface displays "Appropriate Legal Notices"
@@ -336,6 +347,7 @@ item --key n license12 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license12
+menu GNU General Public License
 item --gap --
 item --gap --   1. Source Code.
 item --gap --
@@ -352,6 +364,7 @@ item --key n license13 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license13
+menu GNU General Public License
 item --gap -- is widely used among developers working in that language.
 item --gap --
 item --gap --   The "System Libraries" of an executable work include anything, other
@@ -368,6 +381,7 @@ item --key n license14 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license14
+menu GNU General Public License
 item --gap -- (if any) on which the executable work runs, or a compiler used to
 item --gap -- produce the work, or an object code interpreter used to run it.
 item --gap --
@@ -384,6 +398,7 @@ item --key n license15 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license15
+menu GNU General Public License
 item --gap -- includes interface definition files associated with source files for
 item --gap -- the work, and the source code for shared libraries and dynamically
 item --gap -- linked subprograms that the work is specifically designed to require,
@@ -400,6 +415,7 @@ item --key n license16 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license16
+menu GNU General Public License
 item --gap --   The Corresponding Source for a work in source code form is that
 item --gap -- same work.
 item --gap --
@@ -416,6 +432,7 @@ item --key n license17 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license17
+menu GNU General Public License
 item --gap -- content, constitutes a covered work.  This License acknowledges your
 item --gap -- rights of fair use or other equivalent, as provided by copyright law.
 item --gap --
@@ -432,6 +449,7 @@ item --key n license18 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license18
+menu GNU General Public License
 item --gap -- for you must do so exclusively on your behalf, under your direction
 item --gap -- and control, on terms that prohibit them from making any copies of
 item --gap -- your copyrighted material outside their relationship with you.
@@ -448,6 +466,7 @@ item --key n license19 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license19
+menu GNU General Public License
 item --gap --   No covered work shall be deemed part of an effective technological
 item --gap -- measure under any applicable law fulfilling obligations under article
 item --gap -- 11 of the WIPO copyright treaty adopted on 20 December 1996, or
@@ -464,6 +483,7 @@ item --key n license20 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license20
+menu GNU General Public License
 item --gap -- modification of the work as a means of enforcing, against the work's
 item --gap -- users, your or third parties' legal rights to forbid circumvention of
 item --gap -- technological measures.
@@ -480,6 +500,7 @@ item --key n license21 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license21
+menu GNU General Public License
 item --gap -- non-permissive terms added in accord with section 7 apply to the code;
 item --gap -- keep intact all notices of the absence of any warranty; and give all
 item --gap -- recipients a copy of this License along with the Program.
@@ -496,6 +517,7 @@ item --key n license22 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license22
+menu GNU General Public License
 item --gap -- produce it from the Program, in the form of source code under the
 item --gap -- terms of section 4, provided that you also meet all of these conditions:
 item --gap --
@@ -512,6 +534,7 @@ item --key n license23 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license23
+menu GNU General Public License
 item --gap --
 item --gap --     c) You must license the entire work, as a whole, under this
 item --gap --     License to anyone who comes into possession of a copy.  This
@@ -528,6 +551,7 @@ item --key n license24 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license24
+menu GNU General Public License
 item --gap --     Appropriate Legal Notices; however, if the Program has interactive
 item --gap --     interfaces that do not display Appropriate Legal Notices, your
 item --gap --     work need not make them do so.
@@ -544,6 +568,7 @@ item --key n license25 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license25
+menu GNU General Public License
 item --gap -- beyond what the individual works permit.  Inclusion of a covered work
 item --gap -- in an aggregate does not cause this License to apply to the other
 item --gap -- parts of the aggregate.
@@ -560,6 +585,7 @@ item --key n license26 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license26
+menu GNU General Public License
 item --gap --
 item --gap --     a) Convey the object code in, or embodied in, a physical product
 item --gap --     (including a physical distribution medium), accompanied by the
@@ -576,6 +602,7 @@ item --key n license27 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license27
+menu GNU General Public License
 item --gap --     model, to give anyone who possesses the object code either (1) a
 item --gap --     copy of the Corresponding Source for all the software in the
 item --gap --     product that is covered by this License, on a durable physical
@@ -592,6 +619,7 @@ item --key n license28 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license28
+menu GNU General Public License
 item --gap --     alternative is allowed only occasionally and noncommercially, and
 item --gap --     only if you received the object code with such an offer, in accord
 item --gap --     with subsection 6b.
@@ -608,6 +636,7 @@ item --key n license29 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license29
+menu GNU General Public License
 item --gap --     may be on a different server (operated by you or a third party)
 item --gap --     that supports equivalent copying facilities, provided you maintain
 item --gap --     clear directions next to the object code saying where to find the
@@ -624,6 +653,7 @@ item --key n license30 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license30
+menu GNU General Public License
 item --gap --     charge under subsection 6d.
 item --gap --
 item --gap --   A separable portion of the object code, whose source code is excluded
@@ -640,6 +670,7 @@ item --key n license31 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license31
+menu GNU General Public License
 item --gap -- doubtful cases shall be resolved in favor of coverage.  For a particular
 item --gap -- product received by a particular user, "normally used" refers to a
 item --gap -- typical or common use of that class of product, regardless of the status
@@ -656,6 +687,7 @@ item --key n license32 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license32
+menu GNU General Public License
 item --gap -- procedures, authorization keys, or other information required to install
 item --gap -- and execute modified versions of a covered work in that User Product from
 item --gap -- a modified version of its Corresponding Source.  The information must
@@ -672,6 +704,7 @@ item --key n license33 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license33
+menu GNU General Public License
 item --gap -- User Product is transferred to the recipient in perpetuity or for a
 item --gap -- fixed term (regardless of how the transaction is characterized), the
 item --gap -- Corresponding Source conveyed under this section must be accompanied
@@ -688,6 +721,7 @@ item --key n license34 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license34
+menu GNU General Public License
 item --gap -- for a work that has been modified or installed by the recipient, or for
 item --gap -- the User Product in which it has been modified or installed.  Access to a
 item --gap -- network may be denied when the modification itself materially and
@@ -704,6 +738,7 @@ item --key n license35 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license35
+menu GNU General Public License
 item --gap -- unpacking, reading or copying.
 item --gap --
 item --gap --   7. Additional Terms.
@@ -720,6 +755,7 @@ item --key n license36 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license36
+menu GNU General Public License
 item --gap -- under those permissions, but the entire Program remains governed by
 item --gap -- this License without regard to the additional permissions.
 item --gap --
@@ -736,6 +772,7 @@ item --key n license37 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license37
+menu GNU General Public License
 item --gap --   Notwithstanding any other provision of this License, for material you
 item --gap -- add to a covered work, you may (if authorized by the copyright holders of
 item --gap -- that material) supplement the terms of this License with terms:
@@ -752,6 +789,7 @@ item --key n license38 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license38
+menu GNU General Public License
 item --gap --
 item --gap --     c) Prohibiting misrepresentation of the origin of that material, or
 item --gap --     requiring that modified versions of such material be marked in
@@ -768,6 +806,7 @@ item --key n license39 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license39
+menu GNU General Public License
 item --gap --
 item --gap --     f) Requiring indemnification of licensors and authors of that
 item --gap --     material by anyone who conveys the material (or modified versions of
@@ -784,6 +823,7 @@ item --key n license40 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license40
+menu GNU General Public License
 item --gap -- governed by this License along with a term that is a further
 item --gap -- restriction, you may remove that term.  If a license document contains
 item --gap -- a further restriction but permits relicensing or conveying under this
@@ -800,6 +840,7 @@ item --key n license41 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license41
+menu GNU General Public License
 item --gap -- where to find the applicable terms.
 item --gap --
 item --gap --   Additional terms, permissive or non-permissive, may be stated in the
@@ -816,6 +857,7 @@ item --key n license42 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license42
+menu GNU General Public License
 item --gap -- modify it is void, and will automatically terminate your rights under
 item --gap -- this License (including any patent licenses granted under the third
 item --gap -- paragraph of section 11).
@@ -832,6 +874,7 @@ item --key n license43 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license43
+menu GNU General Public License
 item --gap --
 item --gap --   Moreover, your license from a particular copyright holder is
 item --gap -- reinstated permanently if the copyright holder notifies you of the
@@ -848,6 +891,7 @@ item --key n license44 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license44
+menu GNU General Public License
 item --gap -- this License.  If your rights have been terminated and not permanently
 item --gap -- reinstated, you do not qualify to receive new licenses for the same
 item --gap -- material under section 10.
@@ -864,6 +908,7 @@ item --key n license45 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license45
+menu GNU General Public License
 item --gap -- nothing other than this License grants you permission to propagate or
 item --gap -- modify any covered work.  These actions infringe copyright if you do
 item --gap -- not accept this License.  Therefore, by modifying or propagating a
@@ -880,6 +925,7 @@ item --key n license46 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license46
+menu GNU General Public License
 item --gap -- for enforcing compliance by third parties with this License.
 item --gap --
 item --gap --   An "entity transaction" is a transaction transferring control of an
@@ -896,6 +942,7 @@ item --key n license47 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license47
+menu GNU General Public License
 item --gap -- the predecessor has it or can get it with reasonable efforts.
 item --gap --
 item --gap --   You may not impose any further restrictions on the exercise of the
@@ -912,6 +959,7 @@ item --key n license48 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license48
+menu GNU General Public License
 item --gap --   11. Patents.
 item --gap --
 item --gap --   A "contributor" is a copyright holder who authorizes use under this
@@ -928,6 +976,7 @@ item --key n license49 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license49
+menu GNU General Public License
 item --gap -- but do not include claims that would be infringed only as a
 item --gap -- consequence of further modification of the contributor version.  For
 item --gap -- purposes of this definition, "control" includes the right to grant
@@ -944,6 +993,7 @@ item --key n license50 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license50
+menu GNU General Public License
 item --gap --
 item --gap --   In the following three paragraphs, a "patent license" is any express
 item --gap -- agreement or commitment, however denominated, not to enforce a patent
@@ -960,6 +1010,7 @@ item --key n license51 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license51
+menu GNU General Public License
 item --gap -- to copy, free of charge and under the terms of this License, through a
 item --gap -- publicly available network server or other readily accessible means,
 item --gap -- then you must either (1) cause the Corresponding Source to be so
@@ -976,6 +1027,7 @@ item --key n license52 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license52
+menu GNU General Public License
 item --gap -- country that you have reason to believe are valid.
 item --gap --
 item --gap --   If, pursuant to or in connection with a single transaction or
@@ -992,6 +1044,7 @@ item --key n license53 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license53
+menu GNU General Public License
 item --gap --   A patent license is "discriminatory" if it does not include within
 item --gap -- the scope of its coverage, prohibits the exercise of, or is
 item --gap -- conditioned on the non-exercise of one or more of the rights that are
@@ -1008,6 +1061,7 @@ item --key n license54 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license54
+menu GNU General Public License
 item --gap -- conveyed by you (or copies made from those copies), or (b) primarily
 item --gap -- for and in connection with specific products or compilations that
 item --gap -- contain the covered work, unless you entered into that arrangement,
@@ -1024,6 +1078,7 @@ item --key n license55 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license55
+menu GNU General Public License
 item --gap --
 item --gap --   If conditions are imposed on you (whether by court order, agreement or
 item --gap -- otherwise) that contradict the conditions of this License, they do not
@@ -1040,6 +1095,7 @@ item --key n license56 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license56
+menu GNU General Public License
 item --gap --
 item --gap --   13. Use with the GNU Affero General Public License.
 item --gap --
@@ -1056,6 +1112,7 @@ item --key n license57 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license57
+menu GNU General Public License
 item --gap -- combination as such.
 item --gap --
 item --gap --   14. Revised Versions of this License.
@@ -1072,6 +1129,7 @@ item --key n license58 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license58
+menu GNU General Public License
 item --gap -- Program specifies that a certain numbered version of the GNU General
 item --gap -- Public License "or any later version" applies to it, you have the
 item --gap -- option of following the terms and conditions either of that numbered
@@ -1088,6 +1146,7 @@ item --key n license59 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license59
+menu GNU General Public License
 item --gap -- public statement of acceptance of a version permanently authorizes you
 item --gap -- to choose that version for the Program.
 item --gap --
@@ -1104,6 +1163,7 @@ item --key n license60 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license60
+menu GNU General Public License
 item --gap --   THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
 item --gap -- APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
 item --gap -- HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
@@ -1120,6 +1180,7 @@ item --key n license61 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license61
+menu GNU General Public License
 item --gap --
 item --gap --   IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
 item --gap -- WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
@@ -1136,6 +1197,7 @@ item --key n license62 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license62
+menu GNU General Public License
 item --gap --
 item --gap --   17. Interpretation of Sections 15 and 16.
 item --gap --
@@ -1152,6 +1214,7 @@ item --key n license63 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license63
+menu GNU General Public License
 item --gap --                      END OF TERMS AND CONDITIONS
 item --gap --
 item --gap --             How to Apply These Terms to Your New Programs
@@ -1168,6 +1231,7 @@ item --key n license64 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license64
+menu GNU General Public License
 item --gap -- state the exclusion of warranty; and each file should have at least
 item --gap -- the "copyright" line and a pointer to where the full notice is found.
 item --gap --
@@ -1184,6 +1248,7 @@ item --key n license65 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license65
+menu GNU General Public License
 item --gap --
 item --gap --     This program is distributed in the hope that it will be useful,
 item --gap --     but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -1200,6 +1265,7 @@ item --key n license66 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license66
+menu GNU General Public License
 item --gap --
 item --gap --   If the program does terminal interaction, make it output a short
 item --gap -- notice like this when it starts in an interactive mode:
@@ -1216,6 +1282,7 @@ item --key n license67 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license67
+menu GNU General Public License
 item --gap -- parts of the General Public License.  Of course, your program's commands
 item --gap -- might be different; for a GUI interface, you would use an "about box".
 item --gap --
@@ -1232,6 +1299,7 @@ item --key n license68 (N)ext page
 choose --default n target && goto ${target} || goto license
 
 :license68
+menu GNU General Public License
 item --gap -- may consider it more useful to permit linking proprietary applications with
 item --gap -- the library.  If this is what you want to do, use the GNU Lesser General
 item --gap -- Public License instead of this License.  But first, please read
