@@ -1,4 +1,4 @@
-cd /src
+cd /src || exit 1
 
 # Remove old build files
 rm -rf bin-*
@@ -28,3 +28,7 @@ cp bin-x86_64-pcbios/ipxe.vhd /output/ipxe-x86_64-bios.vhd
 
 cp bin-arm64-efi/ipxe.iso /output/ipxe-arm64-efi.iso
 cp bin-arm64-efi/ipxe.usb /output/ipxe-arm64-efi.usb
+
+# Generate SHA256 sum for each file
+cd /output || exit 1
+sha256sum * > sha256sum.txt

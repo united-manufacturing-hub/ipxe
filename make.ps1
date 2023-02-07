@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 # Cleanup output directory
 Remove-Item -Path output -Recurse -Force | Out-Null
 
