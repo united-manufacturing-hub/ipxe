@@ -5,10 +5,10 @@ menu Networking
 item --gap -- Serial: ${serial}
 item --gap -- MAC: ${mac}
 item --gap -- UUID: ${uuid}
-item dhcpip DHCP IP
-item staticip Static IP
-item advancedip Advanced IP settings
-choose target && goto ${target} || reboot
+item --key d dhcpip (D)HCP IP [Default]
+item --key s staticip (S)tatic IP
+item --key a advancedip (A)dvanced IP settings
+choose --default dhcpip --timeout 30000 target && goto ${target} || reboot
 
 :dhcpip
 dhcp && goto validateip || goto dhcperror
@@ -19,11 +19,11 @@ item --gap -- Serial: ${serial}
 item --gap -- MAC: ${mac}
 item --gap -- UUID: ${uuid}
 item --gap -- Hostname: ${hostname}
-item dhcpip Retry DHCP
-item staticip Static IP
-item advancedip Advanced IP settings
-item reboot Reboot
-choose --default reboot --timeout 3000 target && goto ${target} || goto menu
+item --key r dhcpip (R)etry DHCP
+item --key s staticip (S)tatic IP
+item --key a advancedip (A)dvanced IP settings
+item reboot Reboot [Default]
+choose --default reboot --timeout 30000 target && goto ${target} || goto menu
 
 :reboot
 reboot
@@ -64,21 +64,21 @@ item --gap -- IP: ${ip}
 item --gap -- Netmask: ${netmask}
 item --gap -- Gateway: ${gateway}
 item --gap -- DNS: ${dns}
-item dhcpip Retry DHCP
-item staticip Static IP
-item advancedip Advanced IP settings
-item reboot Reboot
-choose --default reboot --timeout 3000 target && goto ${target} || goto menu
+item --key r dhcpip (R)etry DHCP
+item --key s staticip (S)tatic IP
+item --key a advancedip (A)dvanced IP settings
+item reboot Reboot [Default]
+choose --default reboot --timeout 30000 target && goto ${target} || goto menu
 
 :settings
 console --picture http://boot.ipxe.org/texture.png
 menu Install options
-item installsda Install to SDA
-item installhda Install to HDA
-item installvda Install to VDA
-item installnvme Install to NVMe
-item customtoken Custom token
-choose target && goto ${target} || goto menu
+item --key s installsda Install to (S)DA [Default]
+item --key h installhda Install to (H)DA
+item --key v installvda Install to (V)DA
+item --key n installnvme Install to (N)VMe
+item --key c customtoken (C)ustom token
+choose --default installsda --timeout 30000 target && goto ${target} || goto menu
 
 :installsda
 echo Installing to SDA
