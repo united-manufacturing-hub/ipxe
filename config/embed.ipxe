@@ -113,6 +113,8 @@ echo ~~~ System information ~~~
 echo Serial: ${serial}
 echo MAC address: ${mac}
 echo UUID: ${uuid}
+echo Architecture: ${arch}
+echo Build architecture: ${buildarch}
 echo
 echo
 echo ~~~ Network information ~~~
