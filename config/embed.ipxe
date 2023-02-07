@@ -121,5 +121,7 @@ echo IP: ${ip}
 echo Netmask: ${netmask}
 echo Gateway: ${gateway}
 echo DNS: ${dns}
+echo
+echo
 chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token}&arch=${arch}&buildarch=${buildarch} ||
 prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
