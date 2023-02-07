@@ -1,21 +1,26 @@
 #!ipxe
+colour --rgb 0xa0522d 7
+colour --rgb 0x4682b4 4
+cpair --foreground 7 --background 4 0
 
-:menu License
-item --gap -- UMH - iPXE Copyright (C) 2023 UMH Systems GmbH
-item --gap -- UMH - iPXE comes with ABSOLUTELY NO WARRANTY; for press `l'.
-item --gap -- This is free software, and you are welcome to redistribute it
-item --gap -- under certain conditions; press `l' for details.
+:entrypoint
+menu License
+item --gap --  UMH - iPXE Copyright (C) 2023 UMH Systems GmbH
+item --gap --  This program comes with ABSOLUTELY NO WARRANTY; for details press `w'.
+item --gap --  This is free software, and you are welcome to redistribute it
+item --gap --  under certain conditions; press `l' for details.
 item --gap --
 item --key c menu (A)ccept [Default]
-item --key l license Read full (L)icense
+item --key l license1 Read full (L)icense
+item --key l warranty Show (W)arranty information
 item --key r reboot (R)eboot
-choose --default continue --timeout 30000 target && goto ${target} || reboot
+choose --default menu --timeout 30000 target && goto ${target} || reboot
 
 :menu
 menu Networking
-item --gap -- Serial: ${serial}
-item --gap -- MAC: ${mac}
-item --gap -- UUID: ${uuid}
+item --gap --  Serial: ${serial}
+item --gap --  MAC: ${mac}
+item --gap --  UUID: ${uuid}
 item --key d dhcpip (D)HCP IP [Default]
 item --key s staticip (S)tatic IP
 item --key a advancedip (A)dvanced IP settings
@@ -26,10 +31,10 @@ dhcp && goto validateip || goto dhcperror
 
 :dhcperror
 menu DHCP failure
-item --gap -- Serial: ${serial}
-item --gap -- MAC: ${mac}
-item --gap -- UUID: ${uuid}
-item --gap -- Hostname: ${hostname}
+item --gap --  Serial: ${serial}
+item --gap --  MAC: ${mac}
+item --gap --  UUID: ${uuid}
+item --gap --  Hostname: ${hostname}
 item --key r dhcpip (R)etry DHCP
 item --key s staticip (S)tatic IP
 item --key a advancedip (A)dvanced IP settings
@@ -67,14 +72,14 @@ nslookup ${address} deploy.umh.app && goto settings || goto iperror
 
 :iperror
 menu Network failure
-item --gap -- Serial: ${serial}
-item --gap -- MAC: ${mac}
-item --gap -- UUID: ${uuid}
-item --gap -- Hostname: ${hostname}
-item --gap -- IP: ${ip}
-item --gap -- Netmask: ${netmask}
-item --gap -- Gateway: ${gateway}
-item --gap -- DNS: ${dns}
+item --gap --  Serial: ${serial}
+item --gap --  MAC: ${mac}
+item --gap --  UUID: ${uuid}
+item --gap --  Hostname: ${hostname}
+item --gap --  IP: ${ip}
+item --gap --  Netmask: ${netmask}
+item --gap --  Gateway: ${gateway}
+item --gap --  DNS: ${dns}
 item --key r dhcpip (R)etry DHCP
 item --key s staticip (S)tatic IP
 item --key a advancedip (A)dvanced IP settings
@@ -140,343 +145,1098 @@ chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial
 prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
 
 
-:license
-echo                    GNU GENERAL PUBLIC LICENSE
-echo                        Version 2, June 1991
-echo
-echo  Copyright (C) 1989, 1991 Free Software Foundation, Inc.,
-echo  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-echo  Everyone is permitted to copy and distribute verbatim copies
-echo  of this license document, but changing it is not allowed.
-echo
-echo                             Preamble
-echo
-echo   The licenses for most software are designed to take away your
-echo freedom to share and change it.  By contrast, the GNU General Public
-echo License is intended to guarantee your freedom to share and change free
-echo software--to make sure the software is free for all its users.  This
-echo General Public License applies to mosft of the Free Software
-echo Foundation's software and to any other program whose authors commit to
-echo using it.  (Some other Free Software Foundation software is covered by
-echo the GNU Lesser General Public License instead.)  You can apply it to
-echo your programs, too.
-echo
-echo   When we speak of free software, we are referring to freedom, not
-echo price.  Our General Public Licenses are designed to make sure that you
-echo have the freedom to distribute copies of free software (and charge for
-echo this service if you wish), that you receive source code or can get it
-echo if you want it, that you can change the software or use pieces of it
-echo in new free programs; and that you know you can do these things.
-echo
-echo   To protect your rights, we need to make restrictions that forbid
-echo anyone to deny you these rights or to ask you to surrender the rights.
-echo These restrictions translate to certain responsibilities for you if you
-echo distribute copies of the software, or if you modify it.
-echo
-echo   For example, if you distribute copies of such a program, whether
-echo gratis or for a fee, you must give the recipients all the rights that
-echo you have.  You must make sure that they, too, receive or can get the
-echo source code.  And you must show them these terms so they know their
-echo rights.
-echo
-echo   We protect your rights with two steps: (1) copyright the software, and
-echo (2) offer you this license which gives you legal permission to copy,
-echo distribute and/or modify the software.
-echo
-echo   Also, for each author's protection and ours, we want to make certain
-echo that everyone understands that there is no warranty for this free
-echo software.  If the software is modified by someone else and passed on, we
-echo want its recipients to know that what they have is not the original, so
-echo that any problems introduced by others will not reflect on the original
-echo authors' reputations.
-echo
-echo   Finally, any free program is threatened constantly by software
-echo patents.  We wish to avoid the danger that redistributors of a free
-echo program will individually obtain patent licenses, in effect making the
-echo program proprietary.  To prevent this, we have made it clear that any
-echo patent must be licensed for everyone's free use or not licensed at all.
-echo
-echo   The precise terms and conditions for copying, distribution and
-echo modification follow.
-echo
-echo                     GNU GENERAL PUBLIC LICENSE
-echo    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
-echo
-echo   0. This License applies to any program or other work which contains
-echo a notice placed by the copyright holder saying it may be distributed
-echo under the terms of this General Public License.  The "Program", below,
-echo refers to any such program or work, and a "work based on the Program"
-echo means either the Program or any derivative work under copyright law:
-echo that is to say, a work containing the Program or a portion of it,
-echo either verbatim or with modifications and/or translated into another
-echo language.  (Hereinafter, translation is included without limitation in
-echo the term "modification".)  Each licensee is addressed as "you".
-echo
-echo Activities other than copying, distribution and modification are not
-echo covered by this License; they are outside its scope.  The act of
-echo running the Program is not restricted, and the output from the Program
-echo is covered only if its contents constitute a work based on the
-echo Program (independent of having been made by running the Program).
-echo Whether that is true depends on what the Program does.
-echo
-echo   1. You may copy and distribute verbatim copies of the Program's
-echo source code as you receive it, in any medium, provided that you
-echo conspicuously and appropriately publish on each copy an appropriate
-echo copyright notice and disclaimer of warranty; keep intact all the
-echo notices that refer to this License and to the absence of any warranty;
-echo and give any other recipients of the Program a copy of this License
-echo along with the Program.
-echo
-echo You may charge a fee for the physical act of transferring a copy, and
-echo you may at your option offer warranty protection in exchange for a fee.
-echo
-echo   2. You may modify your copy or copies of the Program or any portion
-echo of it, thus forming a work based on the Program, and copy and
-echo distribute such modifications or work under the terms of Section 1
-echo above, provided that you also meet all of these conditions:
-echo
-echo     a) You must cause the modified files to carry prominent notices
-echo     stating that you changed the files and the date of any change.
-echo
-echo     b) You must cause any work that you distribute or publish, that in
-echo     whole or in part contains or is derived from the Program or any
-echo     part thereof, to be licensed as a whole at no charge to all third
-echo     parties under the terms of this License.
-echo
-echo     c) If the modified program normally reads commands interactively
-echo     when run, you must cause it, when started running for such
-echo     interactive use in the most ordinary way, to print or display an
-echo     announcement including an appropriate copyright notice and a
-echo     notice that there is no warranty (or else, saying that you provide
-echo     a warranty) and that users may redistribute the program under
-echo     these conditions, and telling the user how to view a copy of this
-echo     License.  (Exception: if the Program itself is interactive but
-echo     does not normally print such an announcement, your work based on
-echo     the Program is not required to print an announcement.)
-echo
-echo These requirements apply to the modified work as a whole.  If
-echo identifiable sections of that work are not derived from the Program,
-echo and can be reasonably considered independent and separate works in
-echo themselves, then this License, and its terms, do not apply to those
-echo sections when you distribute them as separate works.  But when you
-echo distribute the same sections as part of a whole which is a work based
-echo on the Program, the distribution of the whole must be on the terms of
-echo this License, whose permissions for other licensees extend to the
-echo entire whole, and thus to each and every part regardless of who wrote it.
-echo
-echo Thus, it is not the intent of this section to claim rights or contest
-echo your rights to work written entirely by you; rather, the intent is to
-echo exercise the right to control the distribution of derivative or
-echo collective works based on the Program.
-echo
-echo In addition, mere aggregation of another work not based on the Program
-echo with the Program (or with a work based on the Program) on a volume of
-echo a storage or distribution medium does not bring the other work under
-echo the scope of this License.
-echo
-echo   3. You may copy and distribute the Program (or a work based on it,
-echo under Section 2) in object code or executable form under the terms of
-echo Sections 1 and 2 above provided that you also do one of the following:
-echo
-echo     a) Accompany it with the complete corresponding machine-readable
-echo     source code, which must be distributed under the terms of Sections
-echo     1 and 2 above on a medium customarily used for software interchange; or,
-echo
-echo     b) Accompany it with a written offer, valid for at least three
-echo     years, to give any third party, for a charge no more than your
-echo     cost of physically performing source distribution, a complete
-echo     machine-readable copy of the corresponding source code, to be
-echo     distributed under the terms of Sections 1 and 2 above on a medium
-echo     customarily used for software interchange; or,
-echo
-echo     c) Accompany it with the information you received as to the offer
-echo     to distribute corresponding source code.  (This alternative is
-echo     allowed only for noncommercial distribution and only if you
-echo     received the program in object code or executable form with such
-echo     an offer, in accord with Subsection b above.)
-echo
-echo The source code for a work means the preferred form of the work for
-echo making modifications to it.  For an executable work, complete source
-echo code means all the source code for all modules it contains, plus any
-echo associated interface definition files, plus the scripts used to
-echo control compilation and installation of the executable.  However, as a
-echo special exception, the source code distributed need not include
-echo anything that is normally distributed (in either source or binary
-echo form) with the major components (compiler, kernel, and so on) of the
-echo operating system on which the executable runs, unless that component
-echo itself accompanies the executable.
-echo
-echo If distribution of executable or object code is made by offering
-echo access to copy from a designated place, then offering equivalent
-echo access to copy the source code from the same place counts as
-echo distribution of the source code, even though third parties are not
-echo compelled to copy the source along with the object code.
-echo
-echo   4. You may not copy, modify, sublicense, or distribute the Program
-echo except as expressly provided under this License.  Any attempt
-echo otherwise to copy, modify, sublicense or distribute the Program is
-echo void, and will automatically terminate your rights under this License.
-echo However, parties who have received copies, or rights, from you under
-echo this License will not have their licenses terminated so long as such
-echo parties remain in full compliance.
-echo
-echo   5. You are not required to accept this License, since you have not
-echo signed it.  However, nothing else grants you permission to modify or
-echo distribute the Program or its derivative works.  These actions are
-echo prohibited by law if you do not accept this License.  Therefore, by
-echo modifying or distributing the Program (or any work based on the
-echo Program), you indicate your acceptance of this License to do so, and
-echo all its terms and conditions for copying, distributing or modifying
-echo the Program or works based on it.
-echo
-echo   6. Each time you redistribute the Program (or any work based on the
-echo Program), the recipient automatically receives a license from the
-echo original licensor to copy, distribute or modify the Program subject to
-echo these terms and conditions.  You may not impose any further
-echo restrictions on the recipients' exercise of the rights granted herein.
-echo You are not responsible for enforcing compliance by third parties to
-echo this License.
-echo
-echo   7. If, as a consequence of a court judgment or allegation of patent
-echo infringement or for any other reason (not limited to patent issues),
-echo conditions are imposed on you (whether by court order, agreement or
-echo otherwise) that contradict the conditions of this License, they do not
-echo excuse you from the conditions of this License.  If you cannot
-echo distribute so as to satisfy simultaneously your obligations under this
-echo License and any other pertinent obligations, then as a consequence you
-echo may not distribute the Program at all.  For example, if a patent
-echo license would not permit royalty-free redistribution of the Program by
-echo all those who receive copies directly or indirectly through you, then
-echo the only way you could satisfy both it and this License would be to
-echo refrain entirely from distribution of the Program.
-echo
-echo If any portion of this section is held invalid or unenforceable under
-echo any particular circumstance, the balance of the section is intended to
-echo apply and the section as a whole is intended to apply in other
-echo circumstances.
-echo
-echo It is not the purpose of this section to induce you to infringe any
-echo patents or other property right claims or to contest validity of any
-echo such claims; this section has the sole purpose of protecting the
-echo integrity of the free software distribution system, which is
-echo implemented by public license practices.  Many people have made
-echo generous contributions to the wide range of software distributed
-echo through that system in reliance on consistent application of that
-echo system; it is up to the author/donor to decide if he or she is willing
-echo to distribute software through any other system and a licensee cannot
-echo impose that choice.
-echo
-echo This section is intended to make thoroughly clear what is believed to
-echo be a consequence of the rest of this License.
-echo
-echo   8. If the distribution and/or use of the Program is restricted in
-echo certain countries either by patents or by copyrighted interfaces, the
-echo original copyright holder who places the Program under this License
-echo may add an explicit geographical distribution limitation excluding
-echo those countries, so that distribution is permitted only in or among
-echo countries not thus excluded.  In such case, this License incorporates
-echo the limitation as if written in the body of this License.
-echo
-echo   9. The Free Software Foundation may publish revised and/or new versions
-echo of the General Public License from time to time.  Such new versions will
-echo be similar in spirit to the present version, but may differ in detail to
-echo address new problems or concerns.
-echo
-echo Each version is given a distinguishing version number.  If the Program
-echo specifies a version number of this License which applies to it and "any
-echo later version", you have the option of following the terms and conditions
-echo either of that version or of any later version published by the Free
-echo Software Foundation.  If the Program does not specify a version number of
-echo this License, you may choose any version ever published by the Free Software
-echo Foundation.
-echo
-echo   10. If you wish to incorporate parts of the Program into other free
-echo programs whose distribution conditions are different, write to the author
-echo to ask for permission.  For software which is copyrighted by the Free
-echo Software Foundation, write to the Free Software Foundation; we sometimes
-echo make exceptions for this.  Our decision will be guided by the two goals
-echo of preserving the free status of all derivatives of our free software and
-echo of promoting the sharing and reuse of software generally.
-echo
-echo                             NO WARRANTY
-echo
-echo   11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
-echo FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN
-echo OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
-echo PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED
-echo OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-echo MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS
-echo TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE
-echo PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING,
-echo REPAIR OR CORRECTION.
-echo
-echo   12. IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-echo WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
-echo REDISTRIBUTE THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES,
-echo INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING
-echo OUT OF THE USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED
-echo TO LOSS OF DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY
-echo YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
-echo PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
-echo POSSIBILITY OF SUCH DAMAGES.
-echo
-echo                      END OF TERMS AND CONDITIONS
-echo
-echo             How to Apply These Terms to Your New Programs
-echo
-echo   If you develop a new program, and you want it to be of the greatest
-echo possible use to the public, the best way to achieve this is to make it
-echo free software which everyone can redistribute and change under these terms.
-echo
-echo   To do so, attach the following notices to the program.  It is safest
-echo to attach them to the start of each source file to most effectively
-echo convey the exclusion of warranty; and each file should have at least
-echo the "copyright" line and a pointer to where the full notice is found.
-echo
-echo     <one line to give the program's name and a brief idea of what it does.>
-echo     Copyright (C) <year>  <name of author>
-echo
-echo     This program is free software; you can redistribute it and/or modify
-echo     it under the terms of the GNU General Public License as published by
-echo     the Free Software Foundation; either version 2 of the License, or
-echo     (at your option) any later version.
-echo
-echo     This program is distributed in the hope that it will be useful,
-echo     but WITHOUT ANY WARRANTY; without even the implied warranty of
-echo     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-echo     GNU General Public License for more details.
-echo
-echo     You should have received a copy of the GNU General Public License along
-echo     with this program; if not, write to the Free Software Foundation, Inc.,
-echo     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-echo
-echo Also add information on how to contact you by electronic and paper mail.
-echo
-echo If the program is interactive, make it output a short notice like this
-echo when it starts in an interactive mode:
-echo
-echo     Gnomovision version 69, Copyright (C) year name of author
-echo     Gnomovision comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
-echo     This is free software, and you are welcome to redistribute it
-echo     under certain conditions; type `show c' for details.
-echo
-echo The hypothetical commands `show w' and `show c' should show the appropriate
-echo parts of the General Public License.  Of course, the commands you use may
-echo be called something other than `show w' and `show c'; they could even be
-echo mouse-clicks or menu items--whatever suits your program.
-echo
-echo You should also get your employer (if you work as a programmer) or your
-echo school, if any, to sign a "copyright disclaimer" for the program, if
-echo necessary.  Here is a sample; alter the names:
-echo
-echo   Yoyodyne, Inc., hereby disclaims all copyright interest in the program
-echo   `Gnomovision' (which makes passes at compilers) written by James Hacker.
-echo
-echo   <signature of Ty Coon>, 1 April 1989
-echo   Ty Coon, President of Vice
-echo
-echo This General Public License does not permit incorporating your program into
-echo proprietary programs.  If your program is a subroutine library, you may
-echo consider it more useful to permit linking proprietary applications with the
-echo library.  If this is what you want to do, use the GNU Lesser General
-echo Public License instead of this License.
+:warranty
+console
+menu Warranty
+item --gap --     THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+item --gap --   APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+item --gap --   HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+item --gap --   OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+item --gap --   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+item --gap --   PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
+item --gap --   IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
+item --gap --   ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+item --key m entrypoint Return to (m)ain menu
+item --key q reboot (Q)uit
+choose --default r target && goto ${target} || reboot
+
+:license1
+item --gap -- GNU GENERAL PUBLIC LICENSE
+item --gap --                        Version 3, 29 June 2007
+item --gap --
+item --gap --  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+item --gap --  Everyone is permitted to copy and distribute verbatim copies
+item --gap --  of this license document, but changing it is not allowed.
+item --gap --
+item --gap --                             Preamble
+item --gap --
+item --gap --   The GNU General Public License is a free, copyleft license for
+item --key m entrypoint Return to (m)ain menu
+item --key n license2 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license2
+item --gap -- software and other kinds of works.
+item --gap --
+item --gap --   The licenses for most software and other practical works are designed
+item --gap -- to take away your freedom to share and change the works.  By contrast,
+item --gap -- the GNU General Public License is intended to guarantee your freedom to
+item --gap -- share and change all versions of a program--to make sure it remains free
+item --gap -- software for all its users.  We, the Free Software Foundation, use the
+item --gap -- GNU General Public License for most of our software; it applies also to
+item --gap -- any other work released this way by its authors.  You can apply it to
+item --gap -- your programs, too.
+item --key m entrypoint Return to (m)ain menu
+item --key p license1 (P)revious page
+item --key n license3 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license3
+item --gap --
+item --gap --   When we speak of free software, we are referring to freedom, not
+item --gap -- price.  Our General Public Licenses are designed to make sure that you
+item --gap -- have the freedom to distribute copies of free software (and charge for
+item --gap -- them if you wish), that you receive source code or can get it if you
+item --gap -- want it, that you can change the software or use pieces of it in new
+item --gap -- free programs, and that you know you can do these things.
+item --gap --
+item --gap --   To protect your rights, we need to prevent others from denying you
+item --gap -- these rights or asking you to surrender the rights.  Therefore, you have
+item --key m entrypoint Return to (m)ain menu
+item --key p license2 (P)revious page
+item --key n license4 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license4
+item --gap -- certain responsibilities if you distribute copies of the software, or if
+item --gap -- you modify it: responsibilities to respect the freedom of others.
+item --gap --
+item --gap --   For example, if you distribute copies of such a program, whether
+item --gap -- gratis or for a fee, you must pass on to the recipients the same
+item --gap -- freedoms that you received.  You must make sure that they, too, receive
+item --gap -- or can get the source code.  And you must show them these terms so they
+item --gap -- know their rights.
+item --gap --
+item --gap --   Developers that use the GNU GPL protect your rights with two steps:
+item --key m entrypoint Return to (m)ain menu
+item --key p license3 (P)revious page
+item --key n license5 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license5
+item --gap -- (1) assert copyright on the software, and (2) offer you this License
+item --gap -- giving you legal permission to copy, distribute and/or modify it.
+item --gap --
+item --gap --   For the developers' and authors' protection, the GPL clearly explains
+item --gap -- that there is no warranty for this free software.  For both users' and
+item --gap -- authors' sake, the GPL requires that modified versions be marked as
+item --gap -- changed, so that their problems will not be attributed erroneously to
+item --gap -- authors of previous versions.
+item --gap --
+item --gap --   Some devices are designed to deny users access to install or run
+item --key m entrypoint Return to (m)ain menu
+item --key p license4 (P)revious page
+item --key n license6 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license6
+item --gap -- modified versions of the software inside them, although the manufacturer
+item --gap -- can do so.  This is fundamentally incompatible with the aim of
+item --gap -- protecting users' freedom to change the software.  The systematic
+item --gap -- pattern of such abuse occurs in the area of products for individuals to
+item --gap -- use, which is precisely where it is most unacceptable.  Therefore, we
+item --gap -- have designed this version of the GPL to prohibit the practice for those
+item --gap -- products.  If such problems arise substantially in other domains, we
+item --gap -- stand ready to extend this provision to those domains in future versions
+item --gap -- of the GPL, as needed to protect the freedom of users.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license5 (P)revious page
+item --key n license7 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license7
+item --gap --   Finally, every program is threatened constantly by software patents.
+item --gap -- States should not allow patents to restrict development and use of
+item --gap -- software on general-purpose computers, but in those that do, we wish to
+item --gap -- avoid the special danger that patents applied to a free program could
+item --gap -- make it effectively proprietary.  To prevent this, the GPL assures that
+item --gap -- patents cannot be used to render the program non-free.
+item --gap --
+item --gap --   The precise terms and conditions for copying, distribution and
+item --gap -- modification follow.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license6 (P)revious page
+item --key n license8 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license8
+item --gap --                        TERMS AND CONDITIONS
+item --gap --
+item --gap --   0. Definitions.
+item --gap --
+item --gap --   "This License" refers to version 3 of the GNU General Public License.
+item --gap --
+item --gap --   "Copyright" also means copyright-like laws that apply to other kinds of
+item --gap -- works, such as semiconductor masks.
+item --gap --
+item --gap --   "The Program" refers to any copyrightable work licensed under this
+item --key m entrypoint Return to (m)ain menu
+item --key p license7 (P)revious page
+item --key n license9 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license9
+item --gap -- License.  Each licensee is addressed as "you".  "Licensees" and
+item --gap -- "recipients" may be individuals or organizations.
+item --gap --
+item --gap --   To "modify" a work means to copy from or adapt all or part of the work
+item --gap -- in a fashion requiring copyright permission, other than the making of an
+item --gap -- exact copy.  The resulting work is called a "modified version" of the
+item --gap -- earlier work or a work "based on" the earlier work.
+item --gap --
+item --gap --   A "covered work" means either the unmodified Program or a work based
+item --gap -- on the Program.
+item --key m entrypoint Return to (m)ain menu
+item --key p license8 (P)revious page
+item --key n license10 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license10
+item --gap --
+item --gap --   To "propagate" a work means to do anything with it that, without
+item --gap -- permission, would make you directly or secondarily liable for
+item --gap -- infringement under applicable copyright law, except executing it on a
+item --gap -- computer or modifying a private copy.  Propagation includes copying,
+item --gap -- distribution (with or without modification), making available to the
+item --gap -- public, and in some countries other activities as well.
+item --gap --
+item --gap --   To "convey" a work means any kind of propagation that enables other
+item --gap -- parties to make or receive copies.  Mere interaction with a user through
+item --key m entrypoint Return to (m)ain menu
+item --key p license9 (P)revious page
+item --key n license11 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license11
+item --gap -- a computer network, with no transfer of a copy, is not conveying.
+item --gap --
+item --gap --   An interactive user interface displays "Appropriate Legal Notices"
+item --gap -- to the extent that it includes a convenient and prominently visible
+item --gap -- feature that (1) displays an appropriate copyright notice, and (2)
+item --gap -- tells the user that there is no warranty for the work (except to the
+item --gap -- extent that warranties are provided), that licensees may convey the
+item --gap -- work under this License, and how to view a copy of this License.  If
+item --gap -- the interface presents a list of user commands or options, such as a
+item --gap -- menu, a prominent item in the list meets this criterion.
+item --key m entrypoint Return to (m)ain menu
+item --key p license10 (P)revious page
+item --key n license12 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license12
+item --gap --
+item --gap --   1. Source Code.
+item --gap --
+item --gap --   The "source code" for a work means the preferred form of the work
+item --gap -- for making modifications to it.  "Object code" means any non-source
+item --gap -- form of a work.
+item --gap --
+item --gap --   A "Standard Interface" means an interface that either is an official
+item --gap -- standard defined by a recognized standards body, or, in the case of
+item --gap -- interfaces specified for a particular programming language, one that
+item --key m entrypoint Return to (m)ain menu
+item --key p license11 (P)revious page
+item --key n license13 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license13
+item --gap -- is widely used among developers working in that language.
+item --gap --
+item --gap --   The "System Libraries" of an executable work include anything, other
+item --gap -- than the work as a whole, that (a) is included in the normal form of
+item --gap -- packaging a Major Component, but which is not part of that Major
+item --gap -- Component, and (b) serves only to enable use of the work with that
+item --gap -- Major Component, or to implement a Standard Interface for which an
+item --gap -- implementation is available to the public in source code form.  A
+item --gap -- "Major Component", in this context, means a major essential component
+item --gap -- (kernel, window system, and so on) of the specific operating system
+item --key m entrypoint Return to (m)ain menu
+item --key p license12 (P)revious page
+item --key n license14 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license14
+item --gap -- (if any) on which the executable work runs, or a compiler used to
+item --gap -- produce the work, or an object code interpreter used to run it.
+item --gap --
+item --gap --   The "Corresponding Source" for a work in object code form means all
+item --gap -- the source code needed to generate, install, and (for an executable
+item --gap -- work) run the object code and to modify the work, including scripts to
+item --gap -- control those activities.  However, it does not include the work's
+item --gap -- System Libraries, or general-purpose tools or generally available free
+item --gap -- programs which are used unmodified in performing those activities but
+item --gap -- which are not part of the work.  For example, Corresponding Source
+item --key m entrypoint Return to (m)ain menu
+item --key p license13 (P)revious page
+item --key n license15 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license15
+item --gap -- includes interface definition files associated with source files for
+item --gap -- the work, and the source code for shared libraries and dynamically
+item --gap -- linked subprograms that the work is specifically designed to require,
+item --gap -- such as by intimate data communication or control flow between those
+item --gap -- subprograms and other parts of the work.
+item --gap --
+item --gap --   The Corresponding Source need not include anything that users
+item --gap -- can regenerate automatically from other parts of the Corresponding
+item --gap -- Source.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license14 (P)revious page
+item --key n license16 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license16
+item --gap --   The Corresponding Source for a work in source code form is that
+item --gap -- same work.
+item --gap --
+item --gap --   2. Basic Permissions.
+item --gap --
+item --gap --   All rights granted under this License are granted for the term of
+item --gap -- copyright on the Program, and are irrevocable provided the stated
+item --gap -- conditions are met.  This License explicitly affirms your unlimited
+item --gap -- permission to run the unmodified Program.  The output from running a
+item --gap -- covered work is covered by this License only if the output, given its
+item --key m entrypoint Return to (m)ain menu
+item --key p license15 (P)revious page
+item --key n license17 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license17
+item --gap -- content, constitutes a covered work.  This License acknowledges your
+item --gap -- rights of fair use or other equivalent, as provided by copyright law.
+item --gap --
+item --gap --   You may make, run and propagate covered works that you do not
+item --gap -- convey, without conditions so long as your license otherwise remains
+item --gap -- in force.  You may convey covered works to others for the sole purpose
+item --gap -- of having them make modifications exclusively for you, or provide you
+item --gap -- with facilities for running those works, provided that you comply with
+item --gap -- the terms of this License in conveying all material for which you do
+item --gap -- not control copyright.  Those thus making or running the covered works
+item --key m entrypoint Return to (m)ain menu
+item --key p license16 (P)revious page
+item --key n license18 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license18
+item --gap -- for you must do so exclusively on your behalf, under your direction
+item --gap -- and control, on terms that prohibit them from making any copies of
+item --gap -- your copyrighted material outside their relationship with you.
+item --gap --
+item --gap --   Conveying under any other circumstances is permitted solely under
+item --gap -- the conditions stated below.  Sublicensing is not allowed; section 10
+item --gap -- makes it unnecessary.
+item --gap --
+item --gap --   3. Protecting Users' Legal Rights From Anti-Circumvention Law.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license17 (P)revious page
+item --key n license19 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license19
+item --gap --   No covered work shall be deemed part of an effective technological
+item --gap -- measure under any applicable law fulfilling obligations under article
+item --gap -- 11 of the WIPO copyright treaty adopted on 20 December 1996, or
+item --gap -- similar laws prohibiting or restricting circumvention of such
+item --gap -- measures.
+item --gap --
+item --gap --   When you convey a covered work, you waive any legal power to forbid
+item --gap -- circumvention of technological measures to the extent such circumvention
+item --gap -- is effected by exercising rights under this License with respect to
+item --gap -- the covered work, and you disclaim any intention to limit operation or
+item --key m entrypoint Return to (m)ain menu
+item --key p license18 (P)revious page
+item --key n license20 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license20
+item --gap -- modification of the work as a means of enforcing, against the work's
+item --gap -- users, your or third parties' legal rights to forbid circumvention of
+item --gap -- technological measures.
+item --gap --
+item --gap --   4. Conveying Verbatim Copies.
+item --gap --
+item --gap --   You may convey verbatim copies of the Program's source code as you
+item --gap -- receive it, in any medium, provided that you conspicuously and
+item --gap -- appropriately publish on each copy an appropriate copyright notice;
+item --gap -- keep intact all notices stating that this License and any
+item --key m entrypoint Return to (m)ain menu
+item --key p license19 (P)revious page
+item --key n license21 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license21
+item --gap -- non-permissive terms added in accord with section 7 apply to the code;
+item --gap -- keep intact all notices of the absence of any warranty; and give all
+item --gap -- recipients a copy of this License along with the Program.
+item --gap --
+item --gap --   You may charge any price or no price for each copy that you convey,
+item --gap -- and you may offer support or warranty protection for a fee.
+item --gap --
+item --gap --   5. Conveying Modified Source Versions.
+item --gap --
+item --gap --   You may convey a work based on the Program, or the modifications to
+item --key m entrypoint Return to (m)ain menu
+item --key p license20 (P)revious page
+item --key n license22 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license22
+item --gap -- produce it from the Program, in the form of source code under the
+item --gap -- terms of section 4, provided that you also meet all of these conditions:
+item --gap --
+item --gap --     a) The work must carry prominent notices stating that you modified
+item --gap --     it, and giving a relevant date.
+item --gap --
+item --gap --     b) The work must carry prominent notices stating that it is
+item --gap --     released under this License and any conditions added under section
+item --gap --     7.  This requirement modifies the requirement in section 4 to
+item --gap --     "keep intact all notices".
+item --key m entrypoint Return to (m)ain menu
+item --key p license21 (P)revious page
+item --key n license23 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license23
+item --gap --
+item --gap --     c) You must license the entire work, as a whole, under this
+item --gap --     License to anyone who comes into possession of a copy.  This
+item --gap --     License will therefore apply, along with any applicable section 7
+item --gap --     additional terms, to the whole of the work, and all its parts,
+item --gap --     regardless of how they are packaged.  This License gives no
+item --gap --     permission to license the work in any other way, but it does not
+item --gap --     invalidate such permission if you have separately received it.
+item --gap --
+item --gap --     d) If the work has interactive user interfaces, each must display
+item --key m entrypoint Return to (m)ain menu
+item --key p license22 (P)revious page
+item --key n license24 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license24
+item --gap --     Appropriate Legal Notices; however, if the Program has interactive
+item --gap --     interfaces that do not display Appropriate Legal Notices, your
+item --gap --     work need not make them do so.
+item --gap --
+item --gap --   A compilation of a covered work with other separate and independent
+item --gap -- works, which are not by their nature extensions of the covered work,
+item --gap -- and which are not combined with it such as to form a larger program,
+item --gap -- in or on a volume of a storage or distribution medium, is called an
+item --gap -- "aggregate" if the compilation and its resulting copyright are not
+item --gap -- used to limit the access or legal rights of the compilation's users
+item --key m entrypoint Return to (m)ain menu
+item --key p license23 (P)revious page
+item --key n license25 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license25
+item --gap -- beyond what the individual works permit.  Inclusion of a covered work
+item --gap -- in an aggregate does not cause this License to apply to the other
+item --gap -- parts of the aggregate.
+item --gap --
+item --gap --   6. Conveying Non-Source Forms.
+item --gap --
+item --gap --   You may convey a covered work in object code form under the terms
+item --gap -- of sections 4 and 5, provided that you also convey the
+item --gap -- machine-readable Corresponding Source under the terms of this License,
+item --gap -- in one of these ways:
+item --key m entrypoint Return to (m)ain menu
+item --key p license24 (P)revious page
+item --key n license26 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license26
+item --gap --
+item --gap --     a) Convey the object code in, or embodied in, a physical product
+item --gap --     (including a physical distribution medium), accompanied by the
+item --gap --     Corresponding Source fixed on a durable physical medium
+item --gap --     customarily used for software interchange.
+item --gap --
+item --gap --     b) Convey the object code in, or embodied in, a physical product
+item --gap --     (including a physical distribution medium), accompanied by a
+item --gap --     written offer, valid for at least three years and valid for as
+item --gap --     long as you offer spare parts or customer support for that product
+item --key m entrypoint Return to (m)ain menu
+item --key p license25 (P)revious page
+item --key n license27 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license27
+item --gap --     model, to give anyone who possesses the object code either (1) a
+item --gap --     copy of the Corresponding Source for all the software in the
+item --gap --     product that is covered by this License, on a durable physical
+item --gap --     medium customarily used for software interchange, for a price no
+item --gap --     more than your reasonable cost of physically performing this
+item --gap --     conveying of source, or (2) access to copy the
+item --gap --     Corresponding Source from a network server at no charge.
+item --gap --
+item --gap --     c) Convey individual copies of the object code with a copy of the
+item --gap --     written offer to provide the Corresponding Source.  This
+item --key m entrypoint Return to (m)ain menu
+item --key p license26 (P)revious page
+item --key n license28 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license28
+item --gap --     alternative is allowed only occasionally and noncommercially, and
+item --gap --     only if you received the object code with such an offer, in accord
+item --gap --     with subsection 6b.
+item --gap --
+item --gap --     d) Convey the object code by offering access from a designated
+item --gap --     place (gratis or for a charge), and offer equivalent access to the
+item --gap --     Corresponding Source in the same way through the same place at no
+item --gap --     further charge.  You need not require recipients to copy the
+item --gap --     Corresponding Source along with the object code.  If the place to
+item --gap --     copy the object code is a network server, the Corresponding Source
+item --key m entrypoint Return to (m)ain menu
+item --key p license27 (P)revious page
+item --key n license29 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license29
+item --gap --     may be on a different server (operated by you or a third party)
+item --gap --     that supports equivalent copying facilities, provided you maintain
+item --gap --     clear directions next to the object code saying where to find the
+item --gap --     Corresponding Source.  Regardless of what server hosts the
+item --gap --     Corresponding Source, you remain obligated to ensure that it is
+item --gap --     available for as long as needed to satisfy these requirements.
+item --gap --
+item --gap --     e) Convey the object code using peer-to-peer transmission, provided
+item --gap --     you inform other peers where the object code and Corresponding
+item --gap --     Source of the work are being offered to the general public at no
+item --key m entrypoint Return to (m)ain menu
+item --key p license28 (P)revious page
+item --key n license30 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license30
+item --gap --     charge under subsection 6d.
+item --gap --
+item --gap --   A separable portion of the object code, whose source code is excluded
+item --gap -- from the Corresponding Source as a System Library, need not be
+item --gap -- included in conveying the object code work.
+item --gap --
+item --gap --   A "User Product" is either (1) a "consumer product", which means any
+item --gap -- tangible personal property which is normally used for personal, family,
+item --gap -- or household purposes, or (2) anything designed or sold for incorporation
+item --gap -- into a dwelling.  In determining whether a product is a consumer product,
+item --key m entrypoint Return to (m)ain menu
+item --key p license29 (P)revious page
+item --key n license31 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license31
+item --gap -- doubtful cases shall be resolved in favor of coverage.  For a particular
+item --gap -- product received by a particular user, "normally used" refers to a
+item --gap -- typical or common use of that class of product, regardless of the status
+item --gap -- of the particular user or of the way in which the particular user
+item --gap -- actually uses, or expects or is expected to use, the product.  A product
+item --gap -- is a consumer product regardless of whether the product has substantial
+item --gap -- commercial, industrial or non-consumer uses, unless such uses represent
+item --gap -- the only significant mode of use of the product.
+item --gap --
+item --gap --   "Installation Information" for a User Product means any methods,
+item --key m entrypoint Return to (m)ain menu
+item --key p license30 (P)revious page
+item --key n license32 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license32
+item --gap -- procedures, authorization keys, or other information required to install
+item --gap -- and execute modified versions of a covered work in that User Product from
+item --gap -- a modified version of its Corresponding Source.  The information must
+item --gap -- suffice to ensure that the continued functioning of the modified object
+item --gap -- code is in no case prevented or interfered with solely because
+item --gap -- modification has been made.
+item --gap --
+item --gap --   If you convey an object code work under this section in, or with, or
+item --gap -- specifically for use in, a User Product, and the conveying occurs as
+item --gap -- part of a transaction in which the right of possession and use of the
+item --key m entrypoint Return to (m)ain menu
+item --key p license31 (P)revious page
+item --key n license33 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license33
+item --gap -- User Product is transferred to the recipient in perpetuity or for a
+item --gap -- fixed term (regardless of how the transaction is characterized), the
+item --gap -- Corresponding Source conveyed under this section must be accompanied
+item --gap -- by the Installation Information.  But this requirement does not apply
+item --gap -- if neither you nor any third party retains the ability to install
+item --gap -- modified object code on the User Product (for example, the work has
+item --gap -- been installed in ROM).
+item --gap --
+item --gap --   The requirement to provide Installation Information does not include a
+item --gap -- requirement to continue to provide support service, warranty, or updates
+item --key m entrypoint Return to (m)ain menu
+item --key p license32 (P)revious page
+item --key n license34 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license34
+item --gap -- for a work that has been modified or installed by the recipient, or for
+item --gap -- the User Product in which it has been modified or installed.  Access to a
+item --gap -- network may be denied when the modification itself materially and
+item --gap -- adversely affects the operation of the network or violates the rules and
+item --gap -- protocols for communication across the network.
+item --gap --
+item --gap --   Corresponding Source conveyed, and Installation Information provided,
+item --gap -- in accord with this section must be in a format that is publicly
+item --gap -- documented (and with an implementation available to the public in
+item --gap -- source code form), and must require no special password or key for
+item --key m entrypoint Return to (m)ain menu
+item --key p license33 (P)revious page
+item --key n license35 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license35
+item --gap -- unpacking, reading or copying.
+item --gap --
+item --gap --   7. Additional Terms.
+item --gap --
+item --gap --   "Additional permissions" are terms that supplement the terms of this
+item --gap -- License by making exceptions from one or more of its conditions.
+item --gap -- Additional permissions that are applicable to the entire Program shall
+item --gap -- be treated as though they were included in this License, to the extent
+item --gap -- that they are valid under applicable law.  If additional permissions
+item --gap -- apply only to part of the Program, that part may be used separately
+item --key m entrypoint Return to (m)ain menu
+item --key p license34 (P)revious page
+item --key n license36 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license36
+item --gap -- under those permissions, but the entire Program remains governed by
+item --gap -- this License without regard to the additional permissions.
+item --gap --
+item --gap --   When you convey a copy of a covered work, you may at your option
+item --gap -- remove any additional permissions from that copy, or from any part of
+item --gap -- it.  (Additional permissions may be written to require their own
+item --gap -- removal in certain cases when you modify the work.)  You may place
+item --gap -- additional permissions on material, added by you to a covered work,
+item --gap -- for which you have or can give appropriate copyright permission.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license35 (P)revious page
+item --key n license37 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license37
+item --gap --   Notwithstanding any other provision of this License, for material you
+item --gap -- add to a covered work, you may (if authorized by the copyright holders of
+item --gap -- that material) supplement the terms of this License with terms:
+item --gap --
+item --gap --     a) Disclaiming warranty or limiting liability differently from the
+item --gap --     terms of sections 15 and 16 of this License; or
+item --gap --
+item --gap --     b) Requiring preservation of specified reasonable legal notices or
+item --gap --     author attributions in that material or in the Appropriate Legal
+item --gap --     Notices displayed by works containing it; or
+item --key m entrypoint Return to (m)ain menu
+item --key p license36 (P)revious page
+item --key n license38 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license38
+item --gap --
+item --gap --     c) Prohibiting misrepresentation of the origin of that material, or
+item --gap --     requiring that modified versions of such material be marked in
+item --gap --     reasonable ways as different from the original version; or
+item --gap --
+item --gap --     d) Limiting the use for publicity purposes of names of licensors or
+item --gap --     authors of the material; or
+item --gap --
+item --gap --     e) Declining to grant rights under trademark law for use of some
+item --gap --     trade names, trademarks, or service marks; or
+item --key m entrypoint Return to (m)ain menu
+item --key p license37 (P)revious page
+item --key n license39 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license39
+item --gap --
+item --gap --     f) Requiring indemnification of licensors and authors of that
+item --gap --     material by anyone who conveys the material (or modified versions of
+item --gap --     it) with contractual assumptions of liability to the recipient, for
+item --gap --     any liability that these contractual assumptions directly impose on
+item --gap --     those licensors and authors.
+item --gap --
+item --gap --   All other non-permissive additional terms are considered "further
+item --gap -- restrictions" within the meaning of section 10.  If the Program as you
+item --gap -- received it, or any part of it, contains a notice stating that it is
+item --key m entrypoint Return to (m)ain menu
+item --key p license38 (P)revious page
+item --key n license40 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license40
+item --gap -- governed by this License along with a term that is a further
+item --gap -- restriction, you may remove that term.  If a license document contains
+item --gap -- a further restriction but permits relicensing or conveying under this
+item --gap -- License, you may add to a covered work material governed by the terms
+item --gap -- of that license document, provided that the further restriction does
+item --gap -- not survive such relicensing or conveying.
+item --gap --
+item --gap --   If you add terms to a covered work in accord with this section, you
+item --gap -- must place, in the relevant source files, a statement of the
+item --gap -- additional terms that apply to those files, or a notice indicating
+item --key m entrypoint Return to (m)ain menu
+item --key p license39 (P)revious page
+item --key n license41 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license41
+item --gap -- where to find the applicable terms.
+item --gap --
+item --gap --   Additional terms, permissive or non-permissive, may be stated in the
+item --gap -- form of a separately written license, or stated as exceptions;
+item --gap -- the above requirements apply either way.
+item --gap --
+item --gap --   8. Termination.
+item --gap --
+item --gap --   You may not propagate or modify a covered work except as expressly
+item --gap -- provided under this License.  Any attempt otherwise to propagate or
+item --key m entrypoint Return to (m)ain menu
+item --key p license40 (P)revious page
+item --key n license42 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license42
+item --gap -- modify it is void, and will automatically terminate your rights under
+item --gap -- this License (including any patent licenses granted under the third
+item --gap -- paragraph of section 11).
+item --gap --
+item --gap --   However, if you cease all violation of this License, then your
+item --gap -- license from a particular copyright holder is reinstated (a)
+item --gap -- provisionally, unless and until the copyright holder explicitly and
+item --gap -- finally terminates your license, and (b) permanently, if the copyright
+item --gap -- holder fails to notify you of the violation by some reasonable means
+item --gap -- prior to 60 days after the cessation.
+item --key m entrypoint Return to (m)ain menu
+item --key p license41 (P)revious page
+item --key n license43 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license43
+item --gap --
+item --gap --   Moreover, your license from a particular copyright holder is
+item --gap -- reinstated permanently if the copyright holder notifies you of the
+item --gap -- violation by some reasonable means, this is the first time you have
+item --gap -- received notice of violation of this License (for any work) from that
+item --gap -- copyright holder, and you cure the violation prior to 30 days after
+item --gap -- your receipt of the notice.
+item --gap --
+item --gap --   Termination of your rights under this section does not terminate the
+item --gap -- licenses of parties who have received copies or rights from you under
+item --key m entrypoint Return to (m)ain menu
+item --key p license42 (P)revious page
+item --key n license44 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license44
+item --gap -- this License.  If your rights have been terminated and not permanently
+item --gap -- reinstated, you do not qualify to receive new licenses for the same
+item --gap -- material under section 10.
+item --gap --
+item --gap --   9. Acceptance Not Required for Having Copies.
+item --gap --
+item --gap --   You are not required to accept this License in order to receive or
+item --gap -- run a copy of the Program.  Ancillary propagation of a covered work
+item --gap -- occurring solely as a consequence of using peer-to-peer transmission
+item --gap -- to receive a copy likewise does not require acceptance.  However,
+item --key m entrypoint Return to (m)ain menu
+item --key p license43 (P)revious page
+item --key n license45 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license45
+item --gap -- nothing other than this License grants you permission to propagate or
+item --gap -- modify any covered work.  These actions infringe copyright if you do
+item --gap -- not accept this License.  Therefore, by modifying or propagating a
+item --gap -- covered work, you indicate your acceptance of this License to do so.
+item --gap --
+item --gap --   10. Automatic Licensing of Downstream Recipients.
+item --gap --
+item --gap --   Each time you convey a covered work, the recipient automatically
+item --gap -- receives a license from the original licensors, to run, modify and
+item --gap -- propagate that work, subject to this License.  You are not responsible
+item --key m entrypoint Return to (m)ain menu
+item --key p license44 (P)revious page
+item --key n license46 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license46
+item --gap -- for enforcing compliance by third parties with this License.
+item --gap --
+item --gap --   An "entity transaction" is a transaction transferring control of an
+item --gap -- organization, or substantially all assets of one, or subdividing an
+item --gap -- organization, or merging organizations.  If propagation of a covered
+item --gap -- work results from an entity transaction, each party to that
+item --gap -- transaction who receives a copy of the work also receives whatever
+item --gap -- licenses to the work the party's predecessor in interest had or could
+item --gap -- give under the previous paragraph, plus a right to possession of the
+item --gap -- Corresponding Source of the work from the predecessor in interest, if
+item --key m entrypoint Return to (m)ain menu
+item --key p license45 (P)revious page
+item --key n license47 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license47
+item --gap -- the predecessor has it or can get it with reasonable efforts.
+item --gap --
+item --gap --   You may not impose any further restrictions on the exercise of the
+item --gap -- rights granted or affirmed under this License.  For example, you may
+item --gap -- not impose a license fee, royalty, or other charge for exercise of
+item --gap -- rights granted under this License, and you may not initiate litigation
+item --gap -- (including a cross-claim or counterclaim in a lawsuit) alleging that
+item --gap -- any patent claim is infringed by making, using, selling, offering for
+item --gap -- sale, or importing the Program or any portion of it.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license46 (P)revious page
+item --key n license48 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license48
+item --gap --   11. Patents.
+item --gap --
+item --gap --   A "contributor" is a copyright holder who authorizes use under this
+item --gap -- License of the Program or a work on which the Program is based.  The
+item --gap -- work thus licensed is called the contributor's "contributor version".
+item --gap --
+item --gap --   A contributor's "essential patent claims" are all patent claims
+item --gap -- owned or controlled by the contributor, whether already acquired or
+item --gap -- hereafter acquired, that would be infringed by some manner, permitted
+item --gap -- by this License, of making, using, or selling its contributor version,
+item --key m entrypoint Return to (m)ain menu
+item --key p license47 (P)revious page
+item --key n license49 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license49
+item --gap -- but do not include claims that would be infringed only as a
+item --gap -- consequence of further modification of the contributor version.  For
+item --gap -- purposes of this definition, "control" includes the right to grant
+item --gap -- patent sublicenses in a manner consistent with the requirements of
+item --gap -- this License.
+item --gap --
+item --gap --   Each contributor grants you a non-exclusive, worldwide, royalty-free
+item --gap -- patent license under the contributor's essential patent claims, to
+item --gap -- make, use, sell, offer for sale, import and otherwise run, modify and
+item --gap -- propagate the contents of its contributor version.
+item --key m entrypoint Return to (m)ain menu
+item --key p license48 (P)revious page
+item --key n license50 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license50
+item --gap --
+item --gap --   In the following three paragraphs, a "patent license" is any express
+item --gap -- agreement or commitment, however denominated, not to enforce a patent
+item --gap -- (such as an express permission to practice a patent or covenant not to
+item --gap -- sue for patent infringement).  To "grant" such a patent license to a
+item --gap -- party means to make such an agreement or commitment not to enforce a
+item --gap -- patent against the party.
+item --gap --
+item --gap --   If you convey a covered work, knowingly relying on a patent license,
+item --gap -- and the Corresponding Source of the work is not available for anyone
+item --key m entrypoint Return to (m)ain menu
+item --key p license49 (P)revious page
+item --key n license51 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license51
+item --gap -- to copy, free of charge and under the terms of this License, through a
+item --gap -- publicly available network server or other readily accessible means,
+item --gap -- then you must either (1) cause the Corresponding Source to be so
+item --gap -- available, or (2) arrange to deprive yourself of the benefit of the
+item --gap -- patent license for this particular work, or (3) arrange, in a manner
+item --gap -- consistent with the requirements of this License, to extend the patent
+item --gap -- license to downstream recipients.  "Knowingly relying" means you have
+item --gap -- actual knowledge that, but for the patent license, your conveying the
+item --gap -- covered work in a country, or your recipient's use of the covered work
+item --gap -- in a country, would infringe one or more identifiable patents in that
+item --key m entrypoint Return to (m)ain menu
+item --key p license50 (P)revious page
+item --key n license52 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license52
+item --gap -- country that you have reason to believe are valid.
+item --gap --
+item --gap --   If, pursuant to or in connection with a single transaction or
+item --gap -- arrangement, you convey, or propagate by procuring conveyance of, a
+item --gap -- covered work, and grant a patent license to some of the parties
+item --gap -- receiving the covered work authorizing them to use, propagate, modify
+item --gap -- or convey a specific copy of the covered work, then the patent license
+item --gap -- you grant is automatically extended to all recipients of the covered
+item --gap -- work and works based on it.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license51 (P)revious page
+item --key n license53 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license53
+item --gap --   A patent license is "discriminatory" if it does not include within
+item --gap -- the scope of its coverage, prohibits the exercise of, or is
+item --gap -- conditioned on the non-exercise of one or more of the rights that are
+item --gap -- specifically granted under this License.  You may not convey a covered
+item --gap -- work if you are a party to an arrangement with a third party that is
+item --gap -- in the business of distributing software, under which you make payment
+item --gap -- to the third party based on the extent of your activity of conveying
+item --gap -- the work, and under which the third party grants, to any of the
+item --gap -- parties who would receive the covered work from you, a discriminatory
+item --gap -- patent license (a) in connection with copies of the covered work
+item --key m entrypoint Return to (m)ain menu
+item --key p license52 (P)revious page
+item --key n license54 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license54
+item --gap -- conveyed by you (or copies made from those copies), or (b) primarily
+item --gap -- for and in connection with specific products or compilations that
+item --gap -- contain the covered work, unless you entered into that arrangement,
+item --gap -- or that patent license was granted, prior to 28 March 2007.
+item --gap --
+item --gap --   Nothing in this License shall be construed as excluding or limiting
+item --gap -- any implied license or other defenses to infringement that may
+item --gap -- otherwise be available to you under applicable patent law.
+item --gap --
+item --gap --   12. No Surrender of Others' Freedom.
+item --key m entrypoint Return to (m)ain menu
+item --key p license53 (P)revious page
+item --key n license55 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license55
+item --gap --
+item --gap --   If conditions are imposed on you (whether by court order, agreement or
+item --gap -- otherwise) that contradict the conditions of this License, they do not
+item --gap -- excuse you from the conditions of this License.  If you cannot convey a
+item --gap -- covered work so as to satisfy simultaneously your obligations under this
+item --gap -- License and any other pertinent obligations, then as a consequence you may
+item --gap -- not convey it at all.  For example, if you agree to terms that obligate you
+item --gap -- to collect a royalty for further conveying from those to whom you convey
+item --gap -- the Program, the only way you could satisfy both those terms and this
+item --gap -- License would be to refrain entirely from conveying the Program.
+item --key m entrypoint Return to (m)ain menu
+item --key p license54 (P)revious page
+item --key n license56 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license56
+item --gap --
+item --gap --   13. Use with the GNU Affero General Public License.
+item --gap --
+item --gap --   Notwithstanding any other provision of this License, you have
+item --gap -- permission to link or combine any covered work with a work licensed
+item --gap -- under version 3 of the GNU Affero General Public License into a single
+item --gap -- combined work, and to convey the resulting work.  The terms of this
+item --gap -- License will continue to apply to the part which is the covered work,
+item --gap -- but the special requirements of the GNU Affero General Public License,
+item --gap -- section 13, concerning interaction through a network will apply to the
+item --key m entrypoint Return to (m)ain menu
+item --key p license55 (P)revious page
+item --key n license57 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license57
+item --gap -- combination as such.
+item --gap --
+item --gap --   14. Revised Versions of this License.
+item --gap --
+item --gap --   The Free Software Foundation may publish revised and/or new versions of
+item --gap -- the GNU General Public License from time to time.  Such new versions will
+item --gap -- be similar in spirit to the present version, but may differ in detail to
+item --gap -- address new problems or concerns.
+item --gap --
+item --gap --   Each version is given a distinguishing version number.  If the
+item --key m entrypoint Return to (m)ain menu
+item --key p license56 (P)revious page
+item --key n license58 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license58
+item --gap -- Program specifies that a certain numbered version of the GNU General
+item --gap -- Public License "or any later version" applies to it, you have the
+item --gap -- option of following the terms and conditions either of that numbered
+item --gap -- version or of any later version published by the Free Software
+item --gap -- Foundation.  If the Program does not specify a version number of the
+item --gap -- GNU General Public License, you may choose any version ever published
+item --gap -- by the Free Software Foundation.
+item --gap --
+item --gap --   If the Program specifies that a proxy can decide which future
+item --gap -- versions of the GNU General Public License can be used, that proxy's
+item --key m entrypoint Return to (m)ain menu
+item --key p license57 (P)revious page
+item --key n license59 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license59
+item --gap -- public statement of acceptance of a version permanently authorizes you
+item --gap -- to choose that version for the Program.
+item --gap --
+item --gap --   Later license versions may give you additional or different
+item --gap -- permissions.  However, no additional obligations are imposed on any
+item --gap -- author or copyright holder as a result of your choosing to follow a
+item --gap -- later version.
+item --gap --
+item --gap --   15. Disclaimer of Warranty.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license58 (P)revious page
+item --key n license60 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license60
+item --gap --   THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+item --gap -- APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+item --gap -- HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+item --gap -- OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+item --gap -- THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+item --gap -- PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
+item --gap -- IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
+item --gap -- ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+item --gap --
+item --gap --   16. Limitation of Liability.
+item --key m entrypoint Return to (m)ain menu
+item --key p license59 (P)revious page
+item --key n license61 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license61
+item --gap --
+item --gap --   IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+item --gap -- WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
+item --gap -- THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+item --gap -- GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+item --gap -- USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+item --gap -- DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+item --gap -- PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+item --gap -- EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+item --gap -- SUCH DAMAGES.
+item --key m entrypoint Return to (m)ain menu
+item --key p license60 (P)revious page
+item --key n license62 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license62
+item --gap --
+item --gap --   17. Interpretation of Sections 15 and 16.
+item --gap --
+item --gap --   If the disclaimer of warranty and limitation of liability provided
+item --gap -- above cannot be given local legal effect according to their terms,
+item --gap -- reviewing courts shall apply local law that most closely approximates
+item --gap -- an absolute waiver of all civil liability in connection with the
+item --gap -- Program, unless a warranty or assumption of liability accompanies a
+item --gap -- copy of the Program in return for a fee.
+item --gap --
+item --key m entrypoint Return to (m)ain menu
+item --key p license61 (P)revious page
+item --key n license63 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license63
+item --gap --                      END OF TERMS AND CONDITIONS
+item --gap --
+item --gap --             How to Apply These Terms to Your New Programs
+item --gap --
+item --gap --   If you develop a new program, and you want it to be of the greatest
+item --gap -- possible use to the public, the best way to achieve this is to make it
+item --gap -- free software which everyone can redistribute and change under these terms.
+item --gap --
+item --gap --   To do so, attach the following notices to the program.  It is safest
+item --gap -- to attach them to the start of each source file to most effectively
+item --key m entrypoint Return to (m)ain menu
+item --key p license62 (P)revious page
+item --key n license64 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license64
+item --gap -- state the exclusion of warranty; and each file should have at least
+item --gap -- the "copyright" line and a pointer to where the full notice is found.
+item --gap --
+item --gap --     <one line to give the program's name and a brief idea of what it does.>
+item --gap --     Copyright (C) <year>  <name of author>
+item --gap --
+item --gap --     This program is free software: you can redistribute it and/or modify
+item --gap --     it under the terms of the GNU General Public License as published by
+item --gap --     the Free Software Foundation, either version 3 of the License, or
+item --gap --     (at your option) any later version.
+item --key m entrypoint Return to (m)ain menu
+item --key p license63 (P)revious page
+item --key n license65 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license65
+item --gap --
+item --gap --     This program is distributed in the hope that it will be useful,
+item --gap --     but WITHOUT ANY WARRANTY; without even the implied warranty of
+item --gap --     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+item --gap --     GNU General Public License for more details.
+item --gap --
+item --gap --     You should have received a copy of the GNU General Public License
+item --gap --     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+item --gap --
+item --gap -- Also add information on how to contact you by electronic and paper mail.
+item --key m entrypoint Return to (m)ain menu
+item --key p license64 (P)revious page
+item --key n license66 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license66
+item --gap --
+item --gap --   If the program does terminal interaction, make it output a short
+item --gap -- notice like this when it starts in an interactive mode:
+item --gap --
+item --gap --     <program>  Copyright (C) <year>  <name of author>
+item --gap --     This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+item --gap --     This is free software, and you are welcome to redistribute it
+item --gap --     under certain conditions; type `show c' for details.
+item --gap --
+item --gap -- The hypothetical commands `show w' and `show c' should show the appropriate
+item --key m entrypoint Return to (m)ain menu
+item --key p license65 (P)revious page
+item --key n license67 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license67
+item --gap -- parts of the General Public License.  Of course, your program's commands
+item --gap -- might be different; for a GUI interface, you would use an "about box".
+item --gap --
+item --gap --   You should also get your employer (if you work as a programmer) or school,
+item --gap -- if any, to sign a "copyright disclaimer" for the program, if necessary.
+item --gap -- For more information on this, and how to apply and follow the GNU GPL, see
+item --gap -- <https://www.gnu.org/licenses/>.
+item --gap --
+item --gap --   The GNU General Public License does not permit incorporating your program
+item --gap -- into proprietary programs.  If your program is a subroutine library, you
+item --key m entrypoint Return to (m)ain menu
+item --key p license66 (P)revious page
+item --key n license68 (N)ext page
+choose --default n target && goto ${target} || goto license
+
+:license68
+item --gap -- may consider it more useful to permit linking proprietary applications with
+item --gap -- the library.  If this is what you want to do, use the GNU Lesser General
+item --gap -- Public License instead of this License.  But first, please read
+item --gap -- <https://www.gnu.org/licenses/why-not-lgpl.html>.
+item --key m entrypoint Return to (m)ain menu
+item --key p license67 (P)revious page
+choose --default n target && goto ${target} || goto license
+
