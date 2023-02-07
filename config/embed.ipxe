@@ -108,6 +108,7 @@ goto boot
 
 :boot
 console
+cpuid --ext 29 && set arch x86_64 || set arch i386
 echo ~~~ System information ~~~
 echo Serial: ${serial}
 echo MAC address: ${mac}
@@ -120,5 +121,5 @@ echo IP: ${ip}
 echo Netmask: ${netmask}
 echo Gateway: ${gateway}
 echo DNS: ${dns}
-chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token} ||
+chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token}&arch=${arch}&buildarch=${buildarch} ||
 prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
