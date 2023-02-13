@@ -87,7 +87,7 @@ item reboot Reboot [Default]
 choose --default reboot --timeout 30000 target && goto ${target} || goto menu
 
 :settings
-console --picture http://boot.ipxe.org/texture.png
+console
 menu Install options
 item --gap -- If you are unsure, press ENTER to accept the default.
 item --gap -- If the installation fails, please try another option.
