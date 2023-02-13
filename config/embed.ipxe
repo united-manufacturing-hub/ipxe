@@ -22,8 +22,8 @@ item --gap --  Serial: ${serial}
 item --gap --  MAC: ${mac}
 item --gap --  UUID: ${uuid}
 item --key d dhcpip (D)HCP IP [Default]
-item --key s staticip (S)tatic IP
-item --key a advancedip (A)dvanced IP settings
+item --key s staticip (S)tatic IP [Not yet implemented]
+item --key a advancedip (A)dvanced IP settings [Not yet implemented]
 choose --default dhcpip --timeout 30000 target && goto ${target} || reboot
 
 :dhcpip
@@ -89,10 +89,12 @@ choose --default reboot --timeout 30000 target && goto ${target} || goto menu
 :settings
 console --picture http://boot.ipxe.org/texture.png
 menu Install options
+item --gap -- If you are unsure, press ENTER to accept the default.
+item --gap -- If the installation fails, please try another option.
 item --key s installsda Install to (S)DA [Default]
+item --key n Install to (N)VMe [nvme0n1]
 item --key h installhda Install to (H)DA
 item --key v installvda Install to (V)DA
-item --key n --default installnvme Install to (N)VMe
 item --key c customtoken (C)ustom token
 choose --default installsda --timeout 30000 target && goto ${target} || goto menu
 
