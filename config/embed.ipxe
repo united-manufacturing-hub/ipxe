@@ -127,30 +127,35 @@ goto boot
 :boot
 console
 cpuid --ext 29 && set arch x86_64 || set arch i386
-echo ~~~ System information ~~~
-echo Serial: ${serial}
-echo MAC address: ${mac}
-echo UUID: ${uuid}
-echo Architecture: ${arch}
-echo Build architecture: ${buildarch}
-echo
-echo
-echo ~~~ Network information ~~~
-echo Hostname: ${hostname}
-echo IP: ${ip}
-echo Netmask: ${netmask}
-echo Gateway: ${gateway}
-echo DNS: ${dns}
-echo
-echo
-chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token}&arch=${arch}&buildarch=${buildarch} ||
-prompt --key s --timeout 10000 Chainloading failed, hit 's' for the iPXE shell; reboot in 10 seconds && shell || reboot
+menu Confirm installation
+item --gap --  Serial: ${serial}
+item --gap --  MAC: ${mac}
+item --gap --  UUID: ${uuid}
+item --gap --  Architecture: ${arch}
+item --gap --  Build architecture: ${buildarch}
+item --gap --  Hostname: ${hostname}
+item --gap --  IP: ${ip}
+item --gap --  Netmask: ${netmask}
+item --gap --  Gateway: ${gateway}
+item --gap --  DNS: ${dns}
+item --gap --  Token: ${token}
+item --key c chainload (C)onfirm [Default]
+item --key m menu (M)enu
+item --key s shell (S)hell
+item --key r reboot (R)eboot
+choose --default menu --timeout 30000 target && goto ${target} || goto menu
 
+:chainload
+chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token}&arch=${arch}&buildarch=${buildarch} ||
+prompt --key s --timeout 30000 Chainloading failed, hit 's' for the iPXE shell; reboot in 30 seconds && shell || reboot
+
+:shell
+shell
 
 :warranty
 console
-menu Warranty
-item --gap --     THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+menu Warranty (GPLv3)
+item --gap --   THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
 item --gap --   APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
 item --gap --   HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
 item --gap --   OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
