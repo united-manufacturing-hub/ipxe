@@ -78,9 +78,9 @@ echo "Resolving grafana.com..."
 set domain grafana.com
 nslookup ${address} grafana.com || goto iperror
 
-echo "Resolving flatcar-linux.net..."
-set domain flatcar-linux.net
-nslookup ${address} flatcar-linux.net || goto iperror
+echo "Resolving lts.release.flatcar-linux.net..."
+set domain lts.release.flatcar-linux.net
+nslookup ${address} lts.release.flatcar-linux.net || goto iperror
 
 echo "Resolving pkgs.tailscale.com..."
 set domain pkgs.tailscale.com
@@ -114,6 +114,8 @@ echo "Resolving get.helm.sh..."
 set domain get.helm.sh
 nslookup ${address} get.helm.sh || goto iperror
 
+echo "Resolved all domains successfully."
+sleep 3
 goto settings
 
 :iperror
