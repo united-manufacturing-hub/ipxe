@@ -194,7 +194,7 @@ item --key c chainload (C)onfirm [Default]
 item --key m menu (M)enu
 item --key s shell (S)hell
 item --key r reboot (R)eboot
-choose --default menu --timeout 30000 target && goto ${target} || goto menu
+choose --default chainload --timeout 30000 target && goto ${target} || goto menu
 
 :chainload
 chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token}&arch=${arch}&buildarch=${buildarch} ||
