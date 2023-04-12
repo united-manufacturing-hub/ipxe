@@ -142,11 +142,20 @@ console
 menu Install options
 item --gap -- If you are unsure, press ENTER to accept the default.
 item --gap -- If the installation fails, please try another option.
-item --key s installsda Install to (S)DA [Default]
-item --key n installnvme Install to (N)VMe [nvme0n1]
-item --key h installhda Install to (H)DA
-item --key v installvda Install to (V)DA
-item --key c customtoken (C)ustom token
+item --gap -- Warning: Either SDA or SDB are usually the installer USB stick.
+item installsda Install to sda [Default]
+item installsdb Install to sdb
+item installsdc Install to sdc
+item installnvme0n1 Install to nvm0n1
+item installnvme1n1 Install to nvm1n1
+item installnvme2n1 Install to nvm2n1
+item installhda Install to HDA
+item installhdb Install to HDB
+item installhdc Install to HDC
+item installvda Install to VDA
+item installvdb Install to VDB
+item installvdc Install to VDC
+item customtoken Custom token
 choose --default installsda --timeout 30000 target && goto ${target} || goto menu
 
 :installsda
@@ -154,9 +163,44 @@ echo Installing to SDA
 set token sda
 goto boot
 
+:installsdb
+echo Installing to SDB
+set token sdb
+goto boot
+
+:installsdc
+echo Installing to SDC
+set token sdc
+goto boot
+
+:installnvme0n1
+echo Installing to NVMe0n1
+set token nvme0n1
+goto boot
+
+:installnvme1n1
+echo Installing to NVMe1n1
+set token nvme1n1
+goto boot
+
+:installnvme2n1
+echo Installing to NVMe2n1
+set token nvme2n1
+goto boot
+
 :installhda
 echo Installing to HDA
 set token hda
+goto boot
+
+:installhdb
+echo Installing to HDB
+set token hdb
+goto boot
+
+:installhdc
+echo Installing to HDC
+set token hdc
 goto boot
 
 :installvda
@@ -164,9 +208,14 @@ echo Installing to VDA
 set token vda
 goto boot
 
-:installnvme
-echo Installing to NVMe
-set token nvme
+:installvdb
+echo Installing to VDB
+set token vdb
+goto boot
+
+:installvdc
+echo Installing to VDC
+set token vdc
 goto boot
 
 :customtoken
