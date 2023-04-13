@@ -1,4 +1,5 @@
 cd /src || exit 1
+set -e
 
 # Remove old build files
 rm -rf bin-*

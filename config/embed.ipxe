@@ -116,9 +116,29 @@ echo Resolving get.helm.sh...
 set domain get.helm.sh
 nslookup ${address} get.helm.sh || goto iperror
 
+echo Checking time...
+ntp pool.ntp.org || goto ntperror
+
 echo Resolved all domains successfully.
 sleep 3
 goto settings
+
+:ntperror
+menu Network failure (Failed to sync time)
+item --gap --  Serial: ${serial}
+item --gap --  MAC: ${mac}
+item --gap --  UUID: ${uuid}
+item --gap --  Hostname: ${hostname}
+item --gap --  IP: ${ip}
+item --gap --  Netmask: ${netmask}
+item --gap --  Gateway: ${gateway}
+item --gap --  DNS: ${dns}
+item --key r dhcpip (R)etry DHCP
+item --key s staticip (S)tatic IP
+item --key a advancedip (A)dvanced IP settings
+item --key i settings Proceed anyway & (I)gnore NTP errors
+item reboot Reboot [Default]
+choose --default reboot --timeout 30000 target && goto ${target} || goto menu
 
 :iperror
 menu Network failure (Failed to resolve DNS for [${domain}])
@@ -155,6 +175,7 @@ item installhdc Install to HDC
 item installvda Install to VDA
 item installvdb Install to VDB
 item installvdc Install to VDC
+item listpci List all PCI devices
 item customtoken Custom token
 choose --default installsda --timeout 30000 target && goto ${target} || goto menu
 
@@ -217,6 +238,13 @@ goto boot
 echo Installing to VDC
 set token vdc
 goto boot
+
+:listpci pciscan addr || goto scan_done
+    echo ${addr:busdevfn}: ${pci/${addr}.0.2}:${pci/${addr}.2.2}
+    goto listpci
+:scan_done
+prompt Press any key to continue...
+goto settings
 
 :customtoken
 echo ~~~ Individual configuration ~~~
