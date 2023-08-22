@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
-# Cleanup output directory
-Remove-Item -Path output -Recurse -Force | Out-Null
+# Cleanup output directory (if exists)
+Remove-Item -Path output -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
 
 # Create output directory
 New-Item -Path output -ItemType Directory | Out-Null
