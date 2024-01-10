@@ -72,49 +72,9 @@ goto menu
 :validateip
 echo ~~~ Validating network settings ~~~
 
-echo Resolving deploy.umh.app...
-set domain deploy.umh.app
+echo Resolving management.umh.app...
+set domain management.umh.app
 nslookup ${address} ${domain} || goto iperror
-
-echo Resolving grafana.com...
-set domain grafana.com
-nslookup ${address} grafana.com || goto iperror
-
-echo Resolving lts.release.flatcar-linux.net...
-set domain lts.release.flatcar-linux.net
-nslookup ${address} lts.release.flatcar-linux.net || goto iperror
-
-echo Resolving pkgs.tailscale.com...
-set domain pkgs.tailscale.com
-nslookup ${address} pkgs.tailscale.com || goto iperror
-
-echo Resolving github.com...
-set domain github.com
-nslookup ${address} github.com || goto iperror
-
-echo Resolving raw.githubusercontent.com...
-set domain raw.githubusercontent.com
-nslookup ${address} raw.githubusercontent.com || goto iperror
-
-echo Resolving repo.umh.app...
-set domain repo.umh.app
-nslookup ${address} repo.umh.app || goto iperror
-
-echo Resolving get.k3s.io...
-set domain get.k3s.io
-nslookup ${address} get.k3s.io || goto iperror
-
-echo Resolving update.k3s.io...
-set domain update.k3s.io
-nslookup ${address} update.k3s.io || goto iperror
-
-echo Resolving k3s-ci-builds.s3.amazonaws.com...
-set domain k3s-ci-builds.s3.amazonaws.com
-nslookup ${address} k3s-ci-builds.s3.amazonaws.com || goto iperror
-
-echo Resolving get.helm.sh...
-set domain get.helm.sh
-nslookup ${address} get.helm.sh || goto iperror
 
 echo Checking time...
 ntp pool.ntp.org || goto ntperror
@@ -274,7 +234,7 @@ item --key r reboot (R)eboot
 choose --default chainload --timeout 30000 target && goto ${target} || goto menu
 
 :chainload
-chain https://deploy.umh.app/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token}&arch=${arch}&buildarch=${buildarch} ||
+chain https://management.umh.app/flatcar/ipxe?uuid=${uuid}&mac=${mac:hexhyp}&serial=${serial}&token=${token}&arch=${arch}&buildarch=${buildarch} ||
 prompt --key s --timeout 30000 Chainloading failed, hit 's' for the iPXE shell; reboot in 30 seconds && shell || reboot
 
 :shell
