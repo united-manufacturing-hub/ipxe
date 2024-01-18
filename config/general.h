@@ -144,7 +144,7 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
 #define TIME_CMD		/* Time commands */
 #define DIGEST_CMD		/* Image crypto digest commands */
 //#define LOTEST_CMD		/* Loopback testing commands */
-//#define VLAN_CMD		/* VLAN commands */
+#define VLAN_CMD		/* VLAN commands */
 //#define PXE_CMD		/* PXE commands */
 //#define REBOOT_CMD		/* Reboot command */
 //#define POWEROFF_CMD		/* Power off command */
