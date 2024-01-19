@@ -22,8 +22,9 @@ item --gap --  Serial: ${serial}
 item --gap --  MAC: ${mac}
 item --gap --  UUID: ${uuid}
 item --key d dhcpip (D)HCP IP [Default]
-item --key s staticip (S)tatic IP [Not yet implemented]
-item --key a advancedip (A)dvanced IP settings [Not yet implemented]
+item --key s staticip (S)tatic IP [iPXE only, contact us for more information]
+item --key a advancedip (A)dvanced IP settings [iPXE only, contact us for more information]
+item --key s shell (S)hell
 item --key i settings Proceed anyway & (I)gnore networking setup
 choose --default dhcpip --timeout 30000 target && goto ${target} || reboot
 
