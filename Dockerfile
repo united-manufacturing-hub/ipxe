@@ -45,6 +45,7 @@ COPY config/isrgrootx1.pem /src/isrgrootx1.pem
 COPY config/lets-encrypt-r3.pem /src/lets-encrypt-r3.pem
 COPY config/ca.pem /src/ca.pem
 COPY config/general.h /src/config/general.h
+COPY config/crypto.h /src/config/crypto.h
 
 WORKDIR /src
 RUN echo "Building dependencies"

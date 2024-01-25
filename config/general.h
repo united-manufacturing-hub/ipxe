@@ -204,8 +204,6 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
 				 * registers when iPXE traps to it due to
 				 * privileged instructions */
 
-#undef OCSP_CHECK /* Disable OCSP */
-#define OCSP_ENABLED 0  /* Disable OCSP */
 
 #include <config/named.h>
 #include NAMED_CONFIG(general.h)
