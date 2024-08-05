@@ -5,13 +5,18 @@ on:
     tags:
       - 'v*'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-release-ipxe
+  cancel-in-progress: true
+
 jobs:
   # Execute Dockerfile
   build:
     permissions: write-all
-    runs-on: ubuntu-latest
+    runs-on:
+      group: arc-runners
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Build the Docker image
         run: docker run -v $(pwd)/output:/output $(docker build -q .)
       # Create release with all files in output folder
