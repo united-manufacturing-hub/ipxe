@@ -138,6 +138,7 @@ item installvdb Install to VDB
 item installvdc Install to VDC
 item listpci List all PCI devices
 item customtoken Custom token
+item shell Open shell
 choose --default installsda --timeout 30000 target && goto ${target} || goto menu
 
 :installsda
