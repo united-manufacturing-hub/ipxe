@@ -40,12 +40,12 @@ RUN chmod +x /src/util/genfsimg
 # Copy config files
 COPY config/embed.ipxe /src/embed.ipxe
 COPY config/ipxe.iso /src/ipxe.iso
-COPY config/isrg-root-x2.pem /src/isrg-root-x2.pem
-COPY config/isrgrootx1.pem /src/isrgrootx1.pem
-COPY config/lets-encrypt-r3.pem /src/lets-encrypt-r3.pem
-COPY config/ca.pem /src/ca.pem
+COPY config/*.pem /src/
 COPY config/general.h /src/config/general.h
 COPY config/crypto.h /src/config/crypto.h
+
+# Ensure at least one .pem file was copied
+RUN if [ ! -f /src/*.pem ]; then echo "No .pem files found"; exit 1; fi
 
 WORKDIR /src
 RUN echo "Building dependencies"

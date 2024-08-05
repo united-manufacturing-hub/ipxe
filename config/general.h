@@ -92,6 +92,13 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
 #define	CRYPTO_80211_WPA2	/* Add support for stronger WPA cryptography */
 
 /*
+ * 802.1x EAP authentication methods
+ *
+ */
+#define EAP_METHOD_MD5		/* MD5-Challenge port authentication */
+//#define EAP_METHOD_MSCHAPV2	/* MS-CHAPv2 port authentication */
+
+/*
  * Name resolution modules
  *
  */
@@ -120,6 +127,7 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
 #define	IMAGE_PEM		/* PEM image support */
 #define	IMAGE_ZLIB		/* ZLIB image support */
 #define	IMAGE_GZIP		/* GZIP image support */
+//#define	IMAGE_UCODE		/* Microcode update image support */
 
 /*
  * Command-line commands to include
@@ -137,6 +145,7 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
 #define DHCP_CMD		/* DHCP management commands */
 #define SANBOOT_CMD		/* SAN boot commands */
 #define MENU_CMD		/* Menu commands */
+#define FORM_CMD		/* Form commands */
 #define LOGIN_CMD		/* Login command */
 #define SYNC_CMD		/* Sync command */
 #define SHELL_CMD		/* Shell command */
@@ -146,21 +155,22 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
 //#define LOTEST_CMD		/* Loopback testing commands */
 #define VLAN_CMD		/* VLAN commands */
 //#define PXE_CMD		/* PXE commands */
-//#define REBOOT_CMD		/* Reboot command */
-//#define POWEROFF_CMD		/* Power off command */
+#define REBOOT_CMD		/* Reboot command */
+#define POWEROFF_CMD		/* Power off command */
 //#define IMAGE_TRUST_CMD	/* Image trust management commands */
 #define PCI_CMD		/* PCI commands */
 #define PARAM_CMD		/* Request parameter commands */
-//#define NEIGHBOUR_CMD		/* Neighbour management commands */
+#define NEIGHBOUR_CMD		/* Neighbour management commands */
 #define PING_CMD		/* Ping command */
 #define CONSOLE_CMD		/* Console command */
 #define IPSTAT_CMD		/* IP statistics commands */
 //#define PROFSTAT_CMD		/* Profiling commands */
 #define NTP_CMD		/* NTP commands */
-//#define CERT_CMD		/* Certificate management commands */
+#define CERT_CMD		/* Certificate management commands */
 //#define IMAGE_MEM_CMD		/* Read memory command */
 #define IMAGE_ARCHIVE_CMD	/* Archive image management commands */
-#define CONSOLE_FRAMEBUFFER
+#define SHIM_CMD		/* EFI shim command (or dummy command) */
+#define CONSOLE_FRAMEBUFFER /* Framebuffer console */
 
 /*
  * ROM-specific options
@@ -180,7 +190,7 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
  * Error message tables to include
  *
  */
-#undef	ERRMSG_80211		/* All 802.11 error descriptions (~3.3kb) */
+#define	ERRMSG_80211		/* All 802.11 error descriptions (~3.3kb) */
 
 /*
  * Obscure configuration options
@@ -203,7 +213,6 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
 #define	TIVOLI_VMM_WORKAROUND	/* Work around the Tivoli VMM's garbling of SSE
 				 * registers when iPXE traps to it due to
 				 * privileged instructions */
-
 
 #include <config/named.h>
 #include NAMED_CONFIG(general.h)

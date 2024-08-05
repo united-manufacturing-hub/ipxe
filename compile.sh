@@ -12,7 +12,7 @@ mkdir -p output
 git submodule update --init --recursive
 
 # Remove existing docker image
-docker rmi unitedmanufacturinghub/ipxe:latest
+docker rmi unitedmanufacturinghub/ipxe:latest || true
 
 # Build new docker image with cache busting
 docker build -t unitedmanufacturinghub/ipxe:latest --build-arg CACHEBUST=$(date +%s) .

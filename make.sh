@@ -7,11 +7,35 @@ rm -rf bin-*
 
 # Variables
 EMBED="embed.ipxe"
-CERT_TRUST=(
-    "ca.pem"
-    "isrgrootx1.pem"
-    "lets-encrypt-r3.pem"
+
+cert_urls=(
+  "https://letsencrypt.org/certs/isrgrootx1.pem"
+  "https://letsencrypt.org/certs/isrg-root-x2.pem"
+  "https://letsencrypt.org/certs/2024/e5.pem"
+  "https://letsencrypt.org/certs/2024/e6.pem"
+  "https://letsencrypt.org/certs/2024/e7.pem"
+  "https://letsencrypt.org/certs/2024/e8.pem"
+  "https://letsencrypt.org/certs/2024/e9.pem"
+  "https://letsencrypt.org/certs/2024/r10.pem"
+  "https://letsencrypt.org/certs/2024/r11.pem"
+  "https://letsencrypt.org/certs/2024/r12.pem"
+  "https://letsencrypt.org/certs/2024/r13.pem"
+  "https://letsencrypt.org/certs/2024/r14.pem"
 )
+
+# Download certificates
+for url in "${cert_urls[@]}"; do
+  echo "Downloading $(basename $url)..."
+  wget $url -O "config/$(basename $url)"
+done
+
+echo "All certificates have been downloaded."
+
+# Build CERT_TRUST array, by reading config folder (all .pem files)
+CERT_TRUST=()
+for file in config/*.pem; do
+    CERT_TRUST+=("$file")
+done
 
 # Convert array to comma-separated string
 CERT_TRUST_STR=$(IFS=, ; echo "${CERT_TRUST[*]}")
